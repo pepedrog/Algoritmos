@@ -1,25 +1,25 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                          //
-//                                      Imprimir Nitidamente                                                //
-//                                                                                                          //
-// Considere o problema de imprimir nitidamente um parágrafo em uma impressora.                             //
-// O texto de entrada  ́e uma sequência de n palavras de comprimentos l[0], ..., l[n - 1]                    //
-//                                                                                                          //
-// Queremos imprimir esse parágrafo com nitidez em uma série de linhas que contêm no máximo                 //
-// M caracteres cada uma.                                                                                   //
-// Nosso critério de “nitidez”  ́e dado a seguir.                                                            //
-//                                                                                                          //
-// Se uma determinada linha contém palavras de i até j, onde i ≤ j                                          //
-// e deixamos exatamente um espaço entre as palavras, o número de espa ̧cos extras no final da linha  ́e      //
-//                                                                                                          //
-//    M − j + i − (l[i] + .. + l[j])                                                                        //
-//                                                                                                          //
-// que deve ser não-negativo para que as palavras caibam na linha.  Desejamos minimizar a soma,             //
-// sobre todas as linhas exceto a  ́ultima, do cubo do número de espaços extras no final das linhas.         //
-//                                                                                                          //
-// Problema 15-2 do CLRS                                                                                    //
-//                                                                                                          //
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                    //
+//                                      Imprimir Nitidamente                                          //
+//                                                                                                    //
+// Considere o problema de imprimir nitidamente um parágrafo em uma impressora.                       //
+// O texto de entrada é uma sequência de n palavras de comprimentos l[0], ..., l[n - 1]               //
+//                                                                                                    //
+// Queremos imprimir esse parágrafo com nitidez em uma série de linhas que contêm no máximo           //
+// M caracteres cada uma.                                                                             //
+// Nosso critério de “nitidez”  ́e dado a seguir.                                                      //
+//                                                                                                    //
+// Se uma determinada linha contém palavras de i até j, onde i ≤ j                                    //
+// e deixamos um espaço entre as palavras, o número de espaços extras no final da linha é            //
+//                                                                                                    //
+//    M − j + i − (l[i] + .. + l[j])                                                                  //
+//                                                                                                    //
+// que deve ser não-negativo para que as palavras caibam na linha. Desejamos minimizar a soma,       //
+// sobre todas as linhas exceto a última, do cubo do número de espaços extras no final das linhas.   //
+//                                                                                                    //
+// Problema 15-2 do CLRS                                                                              //
+//                                                                                                    //
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
 #include <stdlib.h>
