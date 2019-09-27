@@ -10,12 +10,12 @@
 // Nosso critério de “nitidez”  ́e dado a seguir.                                                      //
 //                                                                                                    //
 // Se uma determinada linha contém palavras de i até j, onde i ≤ j                                    //
-// e deixamos um espaço entre as palavras, o número de espaços extras no final da linha é            //
+// e deixamos um espaço entre as palavras, o número de espaços extras no final da linha é             //
 //                                                                                                    //
 //    M − j + i − (l[i] + .. + l[j])                                                                  //
 //                                                                                                    //
-// que deve ser não-negativo para que as palavras caibam na linha. Desejamos minimizar a soma,       //
-// sobre todas as linhas exceto a última, do cubo do número de espaços extras no final das linhas.   //
+// que deve ser não-negativo para que as palavras caibam na linha. Desejamos minimizar a soma,        //
+// sobre todas as linhas exceto a última, do cubo do número de espaços extras no final das linhas.    //
 //                                                                                                    //
 // Problema 15-2 do CLRS                                                                              //
 //                                                                                                    //
