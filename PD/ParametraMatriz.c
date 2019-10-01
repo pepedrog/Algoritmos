@@ -1,24 +1,24 @@
 //////////////////////////////////////////////////////////////////////////////
-//																			//
-//					Parentização de produto de Matrizes						//
-// 																			//
-// Sabemos que a multiplicação de matrizes é associativa, isto é			//
-// 				( A * B ) * C = A * ( B * C )								//
-//																			//
-// Porém, o custo, em multiplicações escalares, de cada uma das maneiras	//
-// de realizar o produto varia de acordo com as dimensões das matrizes.		//
-// 																			//
-// Queremos uma sequência de produtos ótima que minimiza o custo de fazer	//
-// essas multiplicações														//
-//																			//
-// Recebe um número n de matrizes e uma lista de n + 1 dimensões dim,		//
-// onde a matriz i tem dimensões dim[i] x dim[i + 1].						//
-//																			//
-// Devolve na saida padrão uma string com as matrizes e parenteses,			//
-// indicando a ordem das operações.											//
-// 																			//
-// Algoritmo de programação dinâmica que consome O(n^3) unidades de tempo.	//
-//																			//
+//                                                                          //
+//                    Parentização de produto de Matrizes                   //
+//                                                                          //
+// Sabemos que a multiplicação de matrizes é associativa, isto é            //
+//                 ( A * B ) * C = A * ( B * C )                            //
+//                                                                          //
+// Porém, o custo, em multiplicações escalares, de cada uma das maneiras    //
+// de realizar o produto varia de acordo com as dimensões das matrizes.     //
+//                                                                          //
+// Queremos uma sequência de produtos ótima que minimiza o custo de fazer   //
+// essas multiplicações                                                     //
+//                                                                          //
+// Recebe um número n de matrizes e uma lista de n + 1 dimensões dim,       //
+// onde a matriz i tem dimensões dim[i] x dim[i + 1].                       //
+//                                                                          //
+// Devolve na saida padrão uma string com as matrizes e parenteses,         //
+// indicando a ordem das operações.                                         //
+//                                                                          //
+// Algoritmo de programação dinâmica que consome O(n^3) unidades de tempo.  //
+//                                                                          //
 //////////////////////////////////////////////////////////////////////////////
 
 
