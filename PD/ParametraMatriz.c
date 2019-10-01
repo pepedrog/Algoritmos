@@ -1,3 +1,27 @@
+//////////////////////////////////////////////////////////////////////////////
+//																			//
+//					Parentização de produto de Matrizes						//
+// 																			//
+// Sabemos que a multiplicação de matrizes é associativa, isto é			//
+// 				( A * B ) * C = A * ( B * C )								//
+//																			//
+// Porém, o custo, em multiplicações escalares, de cada uma das maneiras	//
+// de realizar o produto varia de acordo com as dimensões das matrizes.		//
+// 																			//
+// Queremos uma sequência de produtos ótima que minimiza o custo de fazer	//
+// essas multiplicações														//
+//																			//
+// Recebe um número n de matrizes e uma lista de n + 1 dimensões dim,		//
+// onde a matriz i tem dimensões dim[i] x dim[i + 1].						//
+//																			//
+// Devolve na saida padrão uma string com as matrizes e parenteses,			//
+// indicando a ordem das operações.											//
+// 																			//
+// Algoritmo de programação dinâmica que consome O(n^3) unidades de tempo.	//
+//																			//
+//////////////////////////////////////////////////////////////////////////////
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,7 +34,6 @@ void recuperaTrack( int** track, int n) {
 	int mIni = 0, mFim = n - 1;
 	int prox = track[mIni][mFim];
 	char* s = malloc( (6 * n - 4) * sizeof( char));
-	//for( int i = 0; i < 6 * n - 5; i++) s[i] = ' ';
 	while( mFim > mIni) {
 		s[ini++] = '(';
 		s[fim--] = ')';
@@ -25,7 +48,7 @@ void recuperaTrack( int** track, int n) {
 			s[fim--] = 'A' + mFim;
 			s[fim--] = ' ';
 			mFim--;
-		}
+		}Algoritmo de programação dinâmica que consome 
 		prox = track[mIni][mFim];
 		s[fim - 2];
 	}
@@ -90,5 +113,4 @@ int main( int argc, char* argv[]) {
 
 	melhorSequencia( dim, n);
 	return 0;
-	
 }
