@@ -87,7 +87,6 @@ int imprimeNitido( char* palavra[], int* l, int* sp, int n, int M) {
     // Alocação das tabelas da PD
 
     // A tabela custo terá a forma:
-    //
     // custo[li][k] := melhor custo de imprimir k palavras em li linhas (INF se for impossível)
     // veio[li][k] := última palavra da linha li - 1 (para rastrear a PD)
     int** custo = malloc( n * sizeof( int*));
@@ -128,7 +127,7 @@ int imprimeNitido( char* palavra[], int* l, int* sp, int n, int M) {
         }
     }
 
-    //Decide qual é o menor custo para as n palavras
+    //Decide qual é o menor custo para as n palavras ( percorre a última coluna )
     int menor = custo[0][n-1];
     int linha = n;
     for(int j = 0; j < n; j++) 
@@ -162,6 +161,7 @@ int main( int argc, char* argv[]) {
     char** palavra;
 
     if( argc > 1) DEBUG = 1;
+
     scanf("%d", &n);
     palavra = malloc( n * sizeof( char* ));
     l = malloc( n* sizeof( int));
@@ -185,7 +185,7 @@ int main( int argc, char* argv[]) {
     scanf("%d", &M);
 
     int custo = imprimeNitido( palavra, l, sp, n, M);
-    // printf("Custo da impressão: %d\n", imprimeNitido( palavra, l, sp, n, M));
+    if( DEBUG) printf("Custo da impressão: %d\n", custo);
     return 0;
 }
 
