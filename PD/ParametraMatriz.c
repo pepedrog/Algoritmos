@@ -5,12 +5,54 @@
 
 int DEBUG = 0;
 
+void recuperaTrack( int** track, int n) {
+	int ini = 0, fim = 6 * n - 6;
+	int mIni = 0, mFim = n - 1;
+	int prox = track[mIni][mFim];
+	char* s = malloc( (6 * n - 4) * sizeof( char));
+	//for( int i = 0; i < 6 * n - 5; i++) s[i] = ' ';
+	while( mFim > mIni) {
+		s[ini++] = '(';
+		s[fim--] = ')';
+		s[ini++] = ' ';
+		s[fim--] = ' ';
+		if( prox == mIni) {
+			s[ini++] = 'A' + mIni;
+			s[ini++] = ' ';
+			mIni++;
+		}
+		else {
+			s[fim--] = 'A' + mFim;
+			s[fim--] = ' ';
+			mFim--;
+		}
+		prox = track[mIni][mFim];
+		s[fim - 2];
+	}
+	s[fim] = 'A' + mFim;
+	s[ 6 * n - 5] = '\0';
+	printf( "%s", s);
+	free( s);
+}
+
+void printaTabela( int** m, int** track, int n) {
+	for( int i = 0; i < n; i++) {
+		for( int j = 0; j < n; j++)
+			printf( "%d|%d\t", m[i][j], track[i][j]);
+		printf( "\n");
+	}
+}
+
 void melhorSequencia( int* dim, int n) {
 	// Inicializa a matriz da PD
 	int** m = malloc( n * sizeof( int*));
 	for( int i = 0; i < n; i++) {
 		m[i] = malloc( n * sizeof( int));
 		m[i][i] = 0;
+	}
+	int** track = malloc( n * sizeof( int*));
+	for( int i = 0; i < n; i++) {
+		track[i] = malloc( n * sizeof( int));
 	}
 	int i; // linha
 	int j; // coluna
@@ -23,17 +65,16 @@ void melhorSequencia( int* dim, int n) {
 			m[i][j] = INF;
 			for( int k = i; k < j; k++) {
 				q = m[i][k] + dim[i] * dim[k + 1] * dim[j + 1] + m[k + 1][j];
-				if( q < m[i][j])
+				if( q < m[i][j]) {
+					track[i][j] =  k;
 					m[i][j] = q;
+				}
 			}
 		}
 	}
 
-	for( i = 0; i < n; i++) {
-		for( j = 0; j < n; j++)
-			printf( "%d\t", m[i][j]);
-		printf( "\n");
-	}
+	if( DEBUG) printaTabela( m, track, n);
+	recuperaTrack( track, n);
 }
 
 int main( int argc, char* argv[]) {
