@@ -48,7 +48,7 @@ void recuperaTrack( int** track, int n) {
 			s[fim--] = 'A' + mFim;
 			s[fim--] = ' ';
 			mFim--;
-		}Algoritmo de programação dinâmica que consome 
+		}
 		prox = track[mIni][mFim];
 		s[fim - 2];
 	}
