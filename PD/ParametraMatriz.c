@@ -29,17 +29,25 @@
 
 int DEBUG = 0;
 
+void printaTabela( int** m, int** track, int n) {
+	for( int i = 0; i < n; i++) {
+		for( int j = 0; j < n; j++)
+			printf( "%d|%d\t", m[i][j], track[i][j]);
+		printf( "\n");
+	}
+}
+
 void recuperaTrack( int** track, int n) {
 	int ini = 0, fim = 6 * n - 6;
 	int mIni = 0, mFim = n - 1;
 	int prox = track[mIni][mFim];
 	char* s = malloc( (6 * n - 4) * sizeof( char));
-	while( mFim > mIni) {
+	while (mFim > mIni) {
 		s[ini++] = '(';
 		s[fim--] = ')';
 		s[ini++] = ' ';
 		s[fim--] = ' ';
-		if( prox == mIni) {
+		if (prox == mIni) {
 			s[ini++] = 'A' + mIni;
 			s[ini++] = ' ';
 			mIni++;
@@ -58,23 +66,15 @@ void recuperaTrack( int** track, int n) {
 	free( s);
 }
 
-void printaTabela( int** m, int** track, int n) {
-	for( int i = 0; i < n; i++) {
-		for( int j = 0; j < n; j++)
-			printf( "%d|%d\t", m[i][j], track[i][j]);
-		printf( "\n");
-	}
-}
-
 void melhorSequencia( int* dim, int n) {
 	// Inicializa a matriz da PD
 	int** m = malloc( n * sizeof( int*));
-	for( int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) {
 		m[i] = malloc( n * sizeof( int));
 		m[i][i] = 0;
 	}
 	int** track = malloc( n * sizeof( int*));
-	for( int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) {
 		track[i] = malloc( n * sizeof( int));
 	}
 	int i; // linha
@@ -82,8 +82,8 @@ void melhorSequencia( int* dim, int n) {
 	int l; // diagonal
 	int q; // custo dessa parametrização
 
-	for( int l = 1; l < n; l++) {
-		for( int i = 0; i < n - l; i++) {
+	for (int l = 1; l < n; l++) {
+		for (int i = 0; i < n - l; i++) {
 			j = i + l;
 			m[i][j] = INF;
 			for( int k = i; k < j; k++) {
@@ -96,7 +96,7 @@ void melhorSequencia( int* dim, int n) {
 		}
 	}
 
-	if( DEBUG) printaTabela( m, track, n);
+	if (DEBUG) printaTabela( m, track, n);
 	recuperaTrack( track, n);
 }
 
@@ -104,13 +104,13 @@ int main( int argc, char* argv[]) {
 	int n;
 	int* dim;
 
-	if( argc > 1) DEBUG = 1;
+	if (argc > 1) DEBUG = 1;
 	scanf( "%d", &n);
 	dim = malloc( (n + 1) * sizeof( int));
 
-	for( int i = 0; i <= n; i++) 
+	for (int i = 0; i <= n; i++) 
 		scanf( "%d", &dim[i]);
 
-	melhorSequencia( dim, n);
+	melhorSequencia (dim, n);
 	return 0;
 }
