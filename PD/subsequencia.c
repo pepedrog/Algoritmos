@@ -2,22 +2,21 @@
 //                                                                                                    //
 //                                    Maior Subsequência Comum                                        //
 //                                                                                                    //
-// Considere o problema de imprimir nitidamente um parágrafo em uma impressora.                       //
-// O texto de entrada é uma sequência de n palavras de comprimentos l[0], ..., l[n - 1]               //
+// Sejam X e Y sequências de caracteres, queremos encontrar a maior subsequência comum de X e Y       //
+// Uma subsequência, aqui, não necessariamente é consecutiva, apenas estar em ordem.                  //
 //                                                                                                    //
-// Queremos imprimir esse parágrafo com nitidez em uma série de linhas que contêm no máximo           //
-// M caracteres cada uma.                                                                             //
-// Nosso critério de “nitidez”  ́e dado a seguir.                                                      //
+// Exemplo:                                                                                           //
+//      X = A B C B D A B                                                                             //
+//      Y = B D C A B A                                                                               //
+//      As maiores subsequências comuns de X e Y são B C B A, B C A B.                                //
 //                                                                                                    //
-// Se uma determinada linha contém palavras de i até j, onde i ≤ j                                    //
-// e deixamos um espaço entre as palavras, o número de espaços extras no final da linha é             //
+// O algoritmo trivial de encontrar todas as subsequências é fatorial, então usaremos programação     //
+// dinâmica para resolver o problema eficientemente.                                                  //
 //                                                                                                    //
-//    M − j + i − (l[i] + .. + l[j])                                                                  //
+// Aqui implementamos os algoritmos de encontrar alguma maior subsequência e de encontrar todas       //
+// todas as maiores subsequências.                                                                    //
 //                                                                                                    //
-// que deve ser não-negativo para que as palavras caibam na linha. Desejamos minimizar a soma,        //
-// sobre todas as linhas exceto a última, do cubo do número de espaços extras no final das linhas.    //
-//                                                                                                    //
-// Problema 15-2 do CLRS                                                                              //
+// Teoria da aula 12 de MAC0328 - Análise de Algoritmos                                               //
 //                                                                                                    //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,6 +74,7 @@ char *rastreiaSeq( int **track, int n, int m, int c, char *X) {
     return seq;
 }
 
+// Função que fará o trabalho principal de preencher a tabela de recorrências
 void maiorSubseqComum( char *X, int n, char *Y, int m) {
     
     int i; // Iteradores das linhas
@@ -87,7 +87,7 @@ void maiorSubseqComum( char *X, int n, char *Y, int m) {
     // Tabela de rastreio da subsequência
     int **track = malloc( (n + 1) * sizeof( int*));
     for (i = 0; i <= n; i++) track[i] = malloc( (m + 1) * sizeof( int *));
-    // Inicializando a tabela (subsequencia vazia)
+    // Inicializando a tabela (subsequencias vazias)
     for (i = 1; i <= n; i++) c[i][0] = 0;
     for (j = 0; j <= m; j++) c[0][j] = 0;
     // Preenchendo a tabela
