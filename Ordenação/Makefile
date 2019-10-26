@@ -1,6 +1,7 @@
 STD = -std=c99
-CFLAGS = -Wall -Wpedantic -O2
+CFLAGS = -Wall -Wpedantic
 CC = gcc $(STD) $(CFLAGS)
+
 all: teste
 
 teste: compara.o get.o printa.o vetor.h
