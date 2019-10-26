@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////
 //
-// Funções que printam vetores na saída padrão
+// Funções que lêem vetores na entrada padrão
 //
 // Como os vetores são ponteiros void, é preciso fazer um malabarismo
 // de conversão de tipos
@@ -11,35 +11,34 @@
 // Depois, para acessar v[i] temos que fazer v + i * tamanho_do_elemento
 // E converter isso para o tipo especificado no nome da função
 // 
-// Recomendo não compilar com -Wpedantic pois ignoramos o retorno do scanf
+// Recomendo não compilar com -O2 pois ignoramos o retorno do scanf
+// E -O2 fica reclamando disso
 // 
 ///////////////////////////////////////////////////////////////////////////
 
 #include "vetor.h" // definição de vetor
-#include <stdio.h> // scanf()
+#include <stdio.h> // printf()
 
-// Printa n inteiros da saída padrão e guarda no vetor v
+// Le n inteiros da entrada padrão e guarda no vetor v
 void INTgetVetor (vetor v, int n) {
     for (int i = 0; i < n; i++)
         scanf ("%d", (int *) ((char *) v + i * sizeof (int)));
 }
 
-// Printa n floats da saída padrão e guarda no vetor v
+// Le n floats da entrada padrão e guarda no vetor v
 void FLOATgetVetor (vetor v, int n) {
     for (int i = 0; i < n; i++)
         scanf ("%f", (float *) ((char *) v + i * sizeof (float)));
 }
 
-// Printa n doubles da saída padrão e guarda no vetor v
+// Le n doubles da entrada padrão e guarda no vetor v
 void DOUBLEgetVetor (vetor v, int n) {
     for (int i = 0; i < n; i++)
         scanf ("%lf", (double *) ((char *) v + i * sizeof (double)));
 }
 
-// Printa n chars da saída padrão e guarda no vetor v
+// Le n chars da entrada padrão e guarda no vetor v
 void CHARgetVetor (vetor v, int n) {
     for (int i = 0; i < n; i++)
         scanf ("%c", (char *) v + i);
 }
-/*
-void STRINGgetVetor (vetor v, int n);*/
