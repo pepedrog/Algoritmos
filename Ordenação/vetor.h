@@ -1,5 +1,8 @@
-typedef unsigned long size_t;
-typedef void* vetor;
+#ifndef VETOR_H
+#define VETOR_H
+    typedef void* vetor;
+    typedef unsigned long size_t;
+#endif
 
 /////////////////////////////////////////////////////
 //

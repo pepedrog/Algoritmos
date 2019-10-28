@@ -11,4 +11,5 @@ int main (void) {
     INTgetVetor (v, n);
     INTprintaVetor (v, n);
     INTselectionSort (v, n);
+    INTprintaVetor (v, n);
 }
