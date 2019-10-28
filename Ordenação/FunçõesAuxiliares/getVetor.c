@@ -16,8 +16,8 @@
 // 
 ///////////////////////////////////////////////////////////////////////////
 
-#include "vetor.h" // definição de vetor
-#include <stdio.h> // printf()
+#include "../vetor.h" // definição de vetor
+#include <stdio.h> // scanf()
 
 // Le n inteiros da entrada padrão e guarda no vetor v
 void INTgetVetor (vetor v, int n) {

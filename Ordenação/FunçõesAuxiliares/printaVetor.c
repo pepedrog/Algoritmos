@@ -13,7 +13,7 @@
 // 
 ///////////////////////////////////////////////////////////////////////////
 
-#include "vetor.h" // definição de vetor
+#include "../vetor.h" // definição de vetor
 #include <stdio.h> // printf()
 
 // Printa n inteiros do vetor v na saída

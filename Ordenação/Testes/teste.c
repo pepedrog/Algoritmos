@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdio.h>
-#include "vetor.h"
-#include "SelectionSort/selectionSort.h"
+#include "../vetor.h"
+#include "../SelectionSort/selectionSort.h"
 
 int main (void) {
     int n;

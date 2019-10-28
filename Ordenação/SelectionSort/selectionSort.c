@@ -1,4 +1,4 @@
-#include "../compara.h" // Funções de comparação pros tipos primitivos
+#include "../FunçõesAuxiliares/compara.h" // Funções de comparação pros tipos primitivos
 #include "../vetor.h" // Definião do vetor e troca()
 
 #define v(i) ((char *) v + i * sz)
