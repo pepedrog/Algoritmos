@@ -1,6 +1,8 @@
 #include <stdlib.h>
+#include <stddef.h>
 #include <stdio.h>
 #include "vetor.h"
+#include "SelectionSort/selectionSort.h"
 
 int main (void) {
     int n;
@@ -8,4 +10,5 @@ int main (void) {
     vetor v = malloc (n * sizeof (int));
     INTgetVetor (v, n);
     INTprintaVetor (v, n);
+    INTselectionSort (v, n);
 }

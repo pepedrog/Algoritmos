@@ -1,3 +1,4 @@
+typedef unsigned long size_t;
 typedef void* vetor;
 
 /////////////////////////////////////////////////////
@@ -31,3 +32,11 @@ void DOUBLEprintaVetor (vetor v, int n);
 void CHARprintaVetor (vetor v, int n);
 
 // void STRINGprintaVetor (vetor v, int n);
+
+/////////////////////////////////////////////////////
+// 
+// Função que troca dois elementos do vetor
+//
+/////////////////////////////////////////////////////
+
+void troca (vetor v, int i, int j, size_t sz);

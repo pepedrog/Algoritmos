@@ -1,32 +1,39 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "compara.h"
-#include <string.h>
+#include "../compara.h" // Funções de comparação pros tipos primitivos
+#include "../vetor.h" // Definião do vetor e troca()
 
-// Troca o conteúdo (t bytes) de dois endereços de memória
-void troca (void * a, void * b, size_t t) {
-    const void * aux = malloc (t);
-    memcpy (aux, a, t);
-    memcpy (a, b, t);
-    memcpy (b, aux, t);
-}
+#define v(i) ((char *) v + i * sz)
 
-void selectionSort (void *v, int n, size_t sz, int (*compara) (const void *, const void *)) {
-    int i, min, j;
-    // Percorre o vetor
+// Ordena o vetor v com a ordem estabelecida pela função compara
+void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
+
+    int i; // Primeiro índice da parte não ordenada
+    int j; // Iterador sob a parte não ordenada
+    int min; // Guarda o menor elemento da parte não ordenada
+
+    // Vai aumentando a parte ordenada, até ser o vetor inteiro
     for (i = 0; i < n; i++) {
         min = i;
         // Percorre a parte não ordenada procurando o menor elemento
         for (j = i + 1; j < n; j++)
             // Se j < min, min = j
-            if (compara ((char *) v + j * sz, (char *) v + min * sz) < 0) min = j;
-        // Coloca o menor elemento na parte ordenada
-        // troca(v[i],v[min]) em notação void*
-        troca ((char *) v + i * sz, (char *) v + min * sz, sz);     
+            if (compara (v(j), v(min)) < 0) min = j;
+        // Coloca mínimo na parte ordenada
+        troca (v, i, min, sz);  
     }
 }
 
-// Selection Sort -> Ordenação por inserção
-void INTselectionSort (int* v, int n) {
+void INTselectionSort (vetor v, int n) {
     selectionSort (v, n, sizeof (int), INTcompara);
+}
+
+void FLOATselectionSort (vetor v, int n) {
+    selectionSort (v, n, sizeof (int), FLOATcompara);
+}
+
+void DOUBLEselectionSort (vetor v, int n) {
+    selectionSort (v, n, sizeof (int), DOUBLEcompara);
+}
+
+void CHARselectionSort (vetor v, int n) {
+    selectionSort (v, n, sizeof (int), CHARcompara);
 }
