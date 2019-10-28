@@ -1,7 +1,13 @@
+
+// Esse define previne que os typedefs sejam definidos duas vezes
 #ifndef VETOR_H
 #define VETOR_H
-    typedef void* vetor;
-    typedef unsigned long size_t;
+
+// Nosso vetor será um ponteiro sem tipo
+typedef void* vetor;
+// size_t será o tamanho dos elementos do vetor
+typedef unsigned long size_t;
+
 #endif
 
 /////////////////////////////////////////////////////
