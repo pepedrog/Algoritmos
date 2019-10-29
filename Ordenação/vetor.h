@@ -52,4 +52,4 @@ void CHARprintaVetor (vetor v, int n);
 void troca (vetor v, int i, int j, size_t sz);
 
 // Copia o conteúdo de ori para dest (memcpy do string.h)
-void copia (vetor v, int dest, int src, size_t sz)
+void copia (vetor v, int dest, int src, size_t sz);

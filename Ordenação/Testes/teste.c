@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "../vetor.h"
 #include "../SelectionSort/selectionSort.h"
+#include "../InsertionSort/insertionSort.h"
 
 int main (void) {
     int n;
@@ -10,6 +11,6 @@ int main (void) {
     vetor v = malloc (n * sizeof (int));
     INTgetVetor (v, n);
     INTprintaVetor (v, n);
-    INTselectionSort (v, n);
+    INTinsertionSort (v, n);
     INTprintaVetor (v, n);
 }
