@@ -72,7 +72,7 @@ void printaTabela( int** custo, int** veio, int n) {
         for (int j = 0; j < n; j++) 
             if (custo[i][j] == INF) printf( "INF\t"); 
             else printf( "%d|%d\t", custo[i][j], veio[i][j]);
-        printf( "%\n");
+        printf( "\n");
     }
 }
 

@@ -9,15 +9,18 @@ void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, con
     int i; // Primeiro índice da parte não ordenada
     int j; // Iterador sob a parte não ordenada
     int min; // Guarda o menor elemento da parte não ordenada
-
     // Vai aumentando a parte ordenada, até ser o vetor inteiro
     for (i = 0; i < n; i++) {
+
         min = i;
         // Percorre a parte não ordenada procurando o menor elemento
         for (j = i + 1; j < n; j++)
             // Se j < min, min = j
-            if (compara (v(j), v(min)) < 0) min = j;
+
+            printf ("comparando %d com %d\n", *((int *) v(j)), *((int *) v(min)));
+            if (compara (v(j), v(min)) < 0) printf(" j < min\n"), min = j;
         // Coloca mínimo na parte ordenada
+        printf ("colocando %d na parte ordenada\n", *((int *) v(min)));
         troca (v, i, min, sz);  
     }
 }
