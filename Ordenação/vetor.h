@@ -44,8 +44,12 @@ void CHARprintaVetor (vetor v, int n);
 
 /////////////////////////////////////////////////////
 // 
-// Função que troca dois elementos do vetor
+// Funções que manipulam elementos do vetor
 //
 /////////////////////////////////////////////////////
 
+// Troca o conteúdo de i com o conteúdo de j
 void troca (vetor v, int i, int j, size_t sz);
+
+// Copia o conteúdo de ori para dest (memcpy do string.h)
+void copia (vetor v, int dest, int src, size_t sz)
