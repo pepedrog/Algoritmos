@@ -21,6 +21,7 @@ double doubleAleatorio (double min, double max) {
 
 vetor INTaleatorio (int n, int min, int max) {
     int vi;
+    srand (time (NULL));
     vetor v = iniciaVetor (n, sizeof (int));
     for (int i = 0; i < n; i++) {
         vi = intAleatorio(min, max);
@@ -31,6 +32,7 @@ vetor INTaleatorio (int n, int min, int max) {
 
 vetor CHARaleatorio (int n, char min, char max) {
     char vi;
+    srand (time (NULL));
     vetor v = iniciaVetor (n, sizeof (char));
     for (int i = 0; i < n; i++) {
         vi = intAleatorio(min, max);
@@ -41,6 +43,7 @@ vetor CHARaleatorio (int n, char min, char max) {
 
 vetor FLOATaleatorio (int n, float min, float max) {
     float vi;
+    srand (time (NULL));
     vetor v = iniciaVetor (n, sizeof (float));
     for (int i = 0; i < n; i++) {
         vi = floatAleatorio(min, max);
@@ -51,6 +54,7 @@ vetor FLOATaleatorio (int n, float min, float max) {
 
 vetor DOUBLEaleatorio (int n, double min, double max) {
     double vi;
+    srand (time (NULL));
     vetor v = iniciaVetor (n, sizeof (double));
     for (int i = 0; i < n; i++) {
         vi = doubleAleatorio(min, max);
