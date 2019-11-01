@@ -12,8 +12,8 @@
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-#include "../FunçõesAuxiliares/compara.h" // Funções de comparação pros tipos primitivos
-#include "../vetor.h" // Definião do vetor e troca()
+#include "FunçõesAuxiliares/compara.h" // Funções de comparação pros tipos primitivos
+#include "vetor.h" // Definião do vetor e troca()
 #include <stdlib.h> // malloc()
 
 #define v(i) ((char *) v + (i) * sz)
@@ -40,6 +40,7 @@ void insertionSort (vetor v, int n, size_t sz, int (*compara) (const void *, con
         // Coloca o v[i] no lugar dele
         copiaMemoria (v(j + 1), guardai, sz);
     }
+    free (guardai);
 }
 
 void INTinsertionSort (vetor v, int n) {

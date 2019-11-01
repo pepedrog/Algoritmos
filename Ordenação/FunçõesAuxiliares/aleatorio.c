@@ -2,7 +2,7 @@
 #include <stdlib.h> // malloc() e rand()
 #include <time.h> // timer para semente aleatorio
 
-typedef char byte;
+// Funções que geram coisas aleatórias
 
 int intAleatorio (int min, int max) {
     double r = rand() / (double) RAND_MAX;

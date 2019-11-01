@@ -1,10 +1,8 @@
 AUX = ../FunçõesAuxiliares/
-SS = ../SelectionSort/
-IS = ../InsertionSort/
 
 STD = -std=c99
 CFLAGS = -Wall -Wpedantic
-INCLUDES = -I$(AUX) -I$(SS) -I$(IS) -I../
+INCLUDES = -I$(AUX) -I../
 CC = gcc $(STD) $(CFLAGS) $(INCLUDES)
 
 all: teste
@@ -18,11 +16,11 @@ printa.o: $(AUX)printaVetor.c
 get.o: $(AUX)getVetor.c
 	$(CC) -c $(AUX)getVetor.c
 
-selection.o: $(SS)/selectionSort.c $(AUX)compara.h ../vetor.h
-	$(CC) -c $(SS)selectionSort.c
+selection.o: ../selectionSort.c $(AUX)compara.h ../vetor.h
+	$(CC) -c ../selectionSort.c
 
-insertion.o: $(IS)/insertionSort.c $(AUX)compara.h ../vetor.h
-	$(CC) -c $(IS)insertionSort.c
+insertion.o: ../insertionSort.c $(AUX)compara.h ../vetor.h
+	$(CC) -c ../insertionSort.c
 
 aleatorio.o: $(AUX)aleatorio.c
 	$(CC) -c $(AUX)aleatorio.c

@@ -12,8 +12,8 @@
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-#include "../FunçõesAuxiliares/compara.h" // Funções de comparação pros tipos primitivos
-#include "../vetor.h" // Definição do vetor e troca()
+#include "FunçõesAuxiliares/compara.h" // Funções de comparação pros tipos primitivos
+#include "vetor.h" // Definição do vetor e troca()
 
 #define v(i) ((char *) v + i * sz)
 
