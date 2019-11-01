@@ -6,6 +6,12 @@
 #define dest(i) ((char *) dest + (i) * sz)
 #define ori(i) ((char *) ori + (i) * sz)
 
+// Função que aloca um vetor na memória
+vetor iniciaVetor (int n, size_t sz) {
+    vetor v = malloc (n * sz);
+    return v;
+}
+
 // Função que copia o conteúdo de ori em dest
 // Recebe dois ponteiros e memória (está char* ao invés de void* para evitar warnings)
 // Equivalente ao memcpy() do string.h

@@ -1,15 +1,11 @@
-#include <stdlib.h> // malloc
 #include <stdio.h> // scanf
 #include "../vetor.h"
-#include "../SelectionSort/selectionSort.h"
-#include "../InsertionSort/insertionSort.h"
 
 int main (void) {
     int n;
-    if (!scanf ("%d", &n)) printf("ERRO: leitura incorreta do tamanho do vetor\n");
-    // vetor v = malloc (n * sizeof (int));
-    vetor v =   INTaleatorio (n);
-
+    scanf ("%d", &n);
+    //vetor v = iniciaVetor (n, sizeof (int));
+    vetor v = INTaleatorio (n, 0, 100);
 
     //INTgetVetor (v, n);
     INTprintaVetor (v, n);
@@ -21,5 +17,4 @@ int main (void) {
     copiaVetor (ordena, v, n, sizeof (int));
     INTinsertionSort (ordena, n);
     INTprintaVetor (ordena, n);
-
 }

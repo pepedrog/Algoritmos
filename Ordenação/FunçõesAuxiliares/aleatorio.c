@@ -1,35 +1,60 @@
 #include "../vetor.h"
 #include <stdlib.h> // malloc() e rand()
-#include <time.h> // clock (semente aleatorio)
+#include <time.h> // timer para semente aleatorio
 
 typedef char byte;
 
-vetor aleatorio (int n, size_t sz) {
-    srand (time (NULL));
-    int tamanho = sz * n;
-    byte b;
-    vetor v = malloc (tamanho);
-    // Vai colocando bytes aleatorios até acabar
-    for (int i = 0; i < tamanho; i++) {
-        b = (byte) rand();
-        atribui (v, i, 1, &b);
+int intAleatorio (int min, int max) {
+    double r = rand() / (double) RAND_MAX;
+    return (r * (max - min) + min);
+}
+
+float floatAleatorio (float min, float max) {
+    double r = rand() / (double) RAND_MAX;
+    return (r * (max - min) + min);
+}
+
+double doubleAleatorio (double min, double max) {
+    double r = rand() / (double) RAND_MAX;
+    return (r * (max - min) + min);
+}
+
+vetor INTaleatorio (int n, int min, int max) {
+    int vi;
+    vetor v = iniciaVetor (n, sizeof (int));
+    for (int i = 0; i < n; i++) {
+        vi = intAleatorio(min, max);
+        atribui (v, i, sizeof (int), &vi);
     }
     return v;
 }
 
-
-vetor INTaleatorio (int n) {
-    return aleatorio (n, sizeof (int));
+vetor CHARaleatorio (int n, char min, char max) {
+    char vi;
+    vetor v = iniciaVetor (n, sizeof (char));
+    for (int i = 0; i < n; i++) {
+        vi = intAleatorio(min, max);
+        atribui (v, i, sizeof (char), &vi);
+    }
+    return v;
 }
 
-vetor CHARaleatorio (int n) {
-    return aleatorio (n, sizeof (char));
+vetor FLOATaleatorio (int n, float min, float max) {
+    float vi;
+    vetor v = iniciaVetor (n, sizeof (float));
+    for (int i = 0; i < n; i++) {
+        vi = floatAleatorio(min, max);
+        atribui (v, i, sizeof (float), &vi);
+    }
+    return v;
 }
 
-vetor FLOATaleatorio (int n) {
-    return aleatorio (n, sizeof (float));
-}
-
-vetor DOUBLEaleatorio (int n) {
-    return aleatorio (n, sizeof (double));
+vetor DOUBLEaleatorio (int n, double min, double max) {
+    double vi;
+    vetor v = iniciaVetor (n, sizeof (double));
+    for (int i = 0; i < n; i++) {
+        vi = doubleAleatorio(min, max);
+        atribui (v, i, sizeof (double), &vi);
+    }
+    return v;
 }
