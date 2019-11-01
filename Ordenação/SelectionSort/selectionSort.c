@@ -23,11 +23,11 @@ void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, con
     // Vai aumentando a parte ordenada
     for (i = 0; i < n; i++) {
         min = i;
-        // Procurando o menor elemento do resto
+        // Procura o menor elemento do resto
         for (j = i + 1; j < n; j++)
             if (compara (v(j), v(min)) < 0) min = j;
         // Coloca o menor na parte ordenada
-        troca (v, i, min, sz);  
+        troca (v, i, min, sz);
     }
 }
 

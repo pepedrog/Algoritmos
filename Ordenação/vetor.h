@@ -9,7 +9,6 @@ typedef void* vetor;
 // void STRINGgetVetor (vetor v, int n); dos elementos do vetor
 typedef unsigned long size_t;
 
-
 /////////////////////////////////////////////////////
 //
 // Funções que lêem o vetor da entrada padrão
@@ -38,17 +37,19 @@ void DOUBLEprintaVetor (vetor v, int n);
 //
 /////////////////////////////////////////////////////
 
-vetor INTaleatorio (int n);
-vetor CHARaleatorio (int n);
-vetor FLOATaleatorio (int n);
-vetor DOUBLEaleatorio (int n);
-vetor aleatorio (int n, size_t sz);
+vetor INTaleatorio (int n, int min, int max);
+vetor CHARaleatorio (int n, char min, char max);
+vetor FLOATaleatorio (int n, float min, float max);
+vetor DOUBLEaleatorio (int n, double min, double max);
 
 /////////////////////////////////////////////////////
 // 
 // Funções que manipulam elementos do vetor
 //
 /////////////////////////////////////////////////////
+
+// Aloca memória pro vetor
+vetor iniciaVetor (int n, size_t sz);
 
 // Faz v[i] = conteudo
 void atribui (vetor v, int i, size_t sz, void *conteudo);
@@ -64,5 +65,27 @@ void copiaVetor(vetor dest, vetor ori, int n, size_t sz);
 
 // Função que devolve uma cópia/clone do vetor v
 vetor clonaVetor (vetor v, int n, size_t sz);
+
+/////////////////////////////////////////////////////
+// 
+// Funções dos diversos algoritmos de Ordenação
+//
+/////////////////////////////////////////////////////
+
+// SelectionSort
+void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTselectionSort (vetor v, int n);
+void CHARselectionSort (vetor v, int n);
+void FLOATselectionSort (vetor v, int n);
+void DOUBLEselectionSort (vetor v, int n);
+
+// InserionSort
+void insertionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTinsertionSort (vetor v, int n);
+void CHARinsertionSort (vetor v, int n);
+void FLOATinsertionSort (vetor v, int n);
+void DOUBLEinsertionSort (vetor v, int n);
 
 #endif
