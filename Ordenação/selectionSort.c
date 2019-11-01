@@ -15,7 +15,7 @@
 #include "FunçõesAuxiliares/compara.h" // Funções de comparação pros tipos primitivos
 #include "vetor.h" // Definição do vetor e troca()
 
-#define v(i) ((char *) v + i * sz)
+#define v(i) ((char *) v + (i) * sz)
 
 // Ordena o vetor v com a ordem estabelecida pela função compara
 void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
@@ -36,13 +36,13 @@ void INTselectionSort (vetor v, int n) {
 }
 
 void FLOATselectionSort (vetor v, int n) {
-    selectionSort (v, n, sizeof (int), FLOATcompara);
+    selectionSort (v, n, sizeof (float), FLOATcompara);
 }
 
 void DOUBLEselectionSort (vetor v, int n) {
-    selectionSort (v, n, sizeof (int), DOUBLEcompara);
+    selectionSort (v, n, sizeof (double), DOUBLEcompara);
 }
 
 void CHARselectionSort (vetor v, int n) {
-    selectionSort (v, n, sizeof (int), CHARcompara);
+    selectionSort (v, n, sizeof (char), CHARcompara);
 }

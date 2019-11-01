@@ -48,13 +48,13 @@ void INTinsertionSort (vetor v, int n) {
 }
 
 void FLOATinsertionSort (vetor v, int n) {
-    insertionSort (v, n, sizeof (int), FLOATcompara);
+    insertionSort (v, n, sizeof (float), FLOATcompara);
 }
 
 void DOUBLEinsertionSort (vetor v, int n) {
-    insertionSort (v, n, sizeof (int), DOUBLEcompara);
+    insertionSort (v, n, sizeof (double), DOUBLEcompara);
 }
 
 void CHARinsertionSort (vetor v, int n) {
-    insertionSort (v, n, sizeof (int), CHARcompara);
+    insertionSort (v, n, sizeof (char), CHARcompara);
 }

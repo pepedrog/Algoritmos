@@ -88,4 +88,11 @@ void CHARinsertionSort (vetor v, int n);
 void FLOATinsertionSort (vetor v, int n);
 void DOUBLEinsertionSort (vetor v, int n);
 
+// BubbleSort
+void bubbleSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTbubbleSort (vetor v, int n);
+void CHARbubbleSort (vetor v, int n);
+void FLOATbubbleSort (vetor v, int n);
+void DOUBLEbubbleSort (vetor v, int n);
 #endif

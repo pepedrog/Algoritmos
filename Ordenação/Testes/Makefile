@@ -7,7 +7,7 @@ CC = gcc $(STD) $(CFLAGS) $(INCLUDES)
 
 all: teste
 
-teste: selection.o insertion.o aleatorio.o compara.o manipula.o get.o printa.o ../vetor.h
+teste: selection.o insertion.o bubble.o aleatorio.o compara.o manipula.o get.o printa.o ../vetor.h
 	$(CC) -o "teste" teste.c *.o
 
 printa.o: $(AUX)printaVetor.c
@@ -21,6 +21,9 @@ selection.o: ../selectionSort.c $(AUX)compara.h ../vetor.h
 
 insertion.o: ../insertionSort.c $(AUX)compara.h ../vetor.h
 	$(CC) -c ../insertionSort.c
+
+bubble.o: ../bubbleSort.c $(AUX)compara.h ../vetor.h
+	$(CC) -c ../bubbleSort.c
 
 aleatorio.o: $(AUX)aleatorio.c
 	$(CC) -c $(AUX)aleatorio.c

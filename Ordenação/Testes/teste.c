@@ -17,4 +17,8 @@ int main (void) {
     copiaVetor (ordena, v, n, sizeof (int));
     INTinsertionSort (ordena, n);
     INTprintaVetor (ordena, n);
+
+    copiaVetor (ordena, v, n, sizeof (int));
+    INTbubbleSort (ordena, n);
+    INTprintaVetor (ordena, n);
 }
