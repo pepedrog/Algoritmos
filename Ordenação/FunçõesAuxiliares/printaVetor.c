@@ -19,28 +19,28 @@
 // Printa n inteiros do vetor v na saída
 void INTprintaVetor (vetor v, int n) {
     for (int i = 0; i < n - 1; i++)
-        printf ("%d\t", *((int *) ((char *) v + i * sizeof (int))));
+        printf ("%d ", *((int *) ((char *) v + i * sizeof (int))));
     printf ("%d\n", *((int *) ((char *) v + (n - 1) * sizeof (int))));
 }
 
 // Printa n floats do vetor v na saída
 void FLOATprintaVetor (vetor v, int n) {
     for (int i = 0; i < n; i++)
-        printf ("%f\t", *((float *) ((char *) v + i * sizeof (float))));
+        printf ("%f ", *((float *) ((char *) v + i * sizeof (float))));
     printf ("%f\n", *((float *) ((char *) v + (n - 1) * sizeof (float))));
 }
 
 // Printa n doubles do vetor v na saída
 void DOUBLEprintaVetor (vetor v, int n) {
     for (int i = 0; i < n; i++)
-        printf ("%lf\t", *((double *) ((char *) v + i * sizeof (double))));
+        printf ("%lf ", *((double *) ((char *) v + i * sizeof (double))));
     printf ("%lf\n", *((double *) ((char *) v + (n - 1) * sizeof (double))));
 }
 
 // Printa n chars do vetor v na saída
 void CHARprintaVetor (vetor v, int n) {
     for (int i = 0; i < n; i++)
-        printf ("%c\t", *((char *) v + i));
+        printf ("%c ", *((char *) v + i));
     printf ("%c\n", *((char *) v + n - 1));
 }
 /*
