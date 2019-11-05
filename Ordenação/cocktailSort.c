@@ -1,11 +1,13 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                     //
-//                             Ordenação por Flutuação                                 //
+//                      Ordenação por Flutuação bidirecionada                          //
+//                            (BubbleSort bidirecionado)                               //
 //                                                                                     //
 // Algoritmo de ordenação baseado na seguinte ideia:                                   //
 // - Empurrar algum elemento pro final do vetor até que ele esbarre em alguem maior    //
 // - Depois, parar de empurrar esse elemento e empurrar o elemento maior               //
-// - Repetir esse processo até 'flutuar' o maior elemento pro final do vetor           //
+// - Repetir esse processo até 'flutuar' o maior pro final do vetor                    //
+// - Fazer essa flutuação na direção contrária, flutuando o menor pro começo do vetor  //
 // - Repetir até que todos os elementos já tenham flutuado pro seu devido lugar        //
 //                                                                                     //
 // É um algoritmo de ordenação estável e consome tempo O(n^2) no caso medio e          //
@@ -19,26 +21,34 @@
 #define v(i) ((char *) v + (i) * sz)
 
 // Ordena o vetor v com a ordem estabelecida pela função compara
-void bubbleSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
-    for (int fim = n; fim > 0; fim--)
-        // Vai flutuando até chegar no fim
-        for (int i = 1; i < fim; i++)
+void cocktailSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
+    int fim = n, ini = 1;
+    while (ini < fim) {
+        // Vai flutuando do começo pro fim
+        for (int i = ini; i < fim; i++)
             if (compara (v(i - 1), v(i)) > 0)
                 troca (v, i - 1, i, sz);
+        fim--;
+        // Vai flutuando do fim pro começo
+        for (int i = fim - 1; i >= ini; i--)
+            if (compara (v(i - 1), v(i)) > 0)
+                troca (v, i - 1, i, sz);
+        ini++;
+    }
 }
 
-void INTbubbleSort (vetor v, int n) {
-    bubbleSort (v, n, sizeof (int), INTcompara);
+void INTcocktailSort (vetor v, int n) {
+    cocktailSort (v, n, sizeof (int), INTcompara);
 }
 
-void FLOATbubbleSort (vetor v, int n) {
-    bubbleSort (v, n, sizeof (float), FLOATcompara);
+void FLOATcocktailSort (vetor v, int n) {
+    cocktailSort (v, n, sizeof (float), FLOATcompara);
 }
 
-void DOUBLEbubbleSort (vetor v, int n) {
-    bubbleSort (v, n, sizeof (double), DOUBLEcompara);
+void DOUBLEcocktailSort (vetor v, int n) {
+    cocktailSort (v, n, sizeof (double), DOUBLEcompara);
 }
 
-void CHARbubbleSort (vetor v, int n) {
-    bubbleSort (v, n, sizeof (char), CHARcompara);
+void CHARcocktailSort (vetor v, int n) {
+    cocktailSort (v, n, sizeof (char), CHARcompara);
 }

@@ -7,7 +7,7 @@ int main (void) {
     clock_t t;
     scanf ("%d", &n);
     //vetor v = iniciaVetor (n, sizeof (int));
-    vetor v = INTaleatorio (n, 0, 1000);
+    vetor v = INTaleatorio (n, 0, 100);
 
     // INTgetVetor (v, n);
     // INTprintaVetor (v, n);
@@ -26,4 +26,9 @@ int main (void) {
     t = clock();
     INTbubbleSort (ordena, n);
     printf ("BubbleSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
+
+    copiaVetor (ordena, v, n, sizeof (int));
+    t = clock();
+    INTcocktailSort (ordena, n);
+    printf ("CocktailSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
 }

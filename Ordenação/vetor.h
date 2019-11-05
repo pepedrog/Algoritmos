@@ -95,4 +95,12 @@ void INTbubbleSort (vetor v, int n);
 void CHARbubbleSort (vetor v, int n);
 void FLOATbubbleSort (vetor v, int n);
 void DOUBLEbubbleSort (vetor v, int n);
+
+// CocktailSort
+void cocktailSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTcocktailSort (vetor v, int n);
+void CHARcocktailSort (vetor v, int n);
+void FLOATcocktailSort (vetor v, int n);
+void DOUBLEcocktailSort (vetor v, int n);
 #endif
