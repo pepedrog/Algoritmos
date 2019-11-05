@@ -1,6 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                     //
 //                             Ordenação por Inserção                                  //
+//                                (Insertion Sort)                                     //
 //                                                                                     //
 // Algoritmo de ordenação baseado na seguinte ideia:                                   //
 // - Manter o começo do vetor ordenado (começa vazio)                                  //

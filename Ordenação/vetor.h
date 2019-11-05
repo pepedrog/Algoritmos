@@ -113,4 +113,12 @@ void INTcocktailSort (vetor v, int n);
 void CHARcocktailSort (vetor v, int n);
 void FLOATcocktailSort (vetor v, int n);
 void DOUBLEcocktailSort (vetor v, int n);
+
+// MergeSort
+void mergeSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTmergeSort (vetor v, int n);
+void CHARmergeSort (vetor v, int n);
+void FLOATmergeSort (vetor v, int n);
+void DOUBLEmergeSort (vetor v, int n);
 #endif

@@ -1,7 +1,8 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                     //
 //                      Ordenação por Flutuação bidirecionada                          //
-//                            (BubbleSort bidirecionado)                               //
+//                               "Ordenação Coquetel"                                  //
+//                   (Bubble Sort bidirecionado / Cocktail Sort)                       //
 //                                                                                     //
 // Algoritmo de ordenação baseado na seguinte ideia:                                   //
 // - Empurrar algum elemento pro final do vetor até que ele esbarre em alguem maior    //

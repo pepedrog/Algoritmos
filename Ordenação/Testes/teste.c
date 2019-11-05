@@ -1,5 +1,6 @@
-#include <stdio.h> // scanf
-#include <time.h> // pra medir o tempo da ordenação
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "../vetor.h"
 
 int main (void) {
@@ -35,4 +36,13 @@ int main (void) {
     INTcocktailSort (ordena, n);
     printf ("CocktailSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado");
+
+    copiaVetor (ordena, v, n, sizeof (int));
+    t = clock();
+    INTmergeSort (ordena, n);
+    printf ("MergeSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
+    if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado");
+
+    free (ordena);
+    free (v);
 }

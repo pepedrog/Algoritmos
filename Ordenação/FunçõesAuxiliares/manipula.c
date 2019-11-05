@@ -26,8 +26,8 @@ void atribui (vetor v, int i, size_t sz, void *conteudo) {
 
 // Copia os n primeiros elementos do vetor ori no vetor dest
 void copiaVetor (vetor dest, vetor ori, int n, size_t sz) {
-    for (int i = 0; i < n; i++) 
-        copiaMemoria (dest(i), ori(i), sz);
+    while (n--)
+        copiaMemoria (dest(n), ori(n), sz);
 }
 
 // Função que devolve uma cópia do vetor v

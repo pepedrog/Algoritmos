@@ -1,6 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                     //
 //                             Ordenação por Flutuação                                 //
+//                                  (Bubble Sort)                                      //
 //                                                                                     //
 // Algoritmo de ordenação baseado na seguinte ideia:                                   //
 // - Empurrar algum elemento pro final do vetor até que ele esbarre em alguem maior    //
