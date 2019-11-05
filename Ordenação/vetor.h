@@ -1,14 +1,16 @@
-
-// Esse ifndef define previne que o conteúdo seja definido/incluido duas vezes
+// Esse ifndef previne que o conteúdo seja definido/incluido duas vezes
 #ifndef VETOR_H
 #define VETOR_H
 
+#define TRUE 1
+#define FALSE 0
+
 // Nosso vetor será um ponteiro sem tipo
 typedef void* vetor;
-// size_t será o tamanho
-// void STRINGgetVetor (vetor v, int n); dos elementos do vetor
+// size_t será o tamanho dos elementos do vetor
 typedef unsigned long size_t;
 
+typedef char bool;
 /////////////////////////////////////////////////////
 //
 // Funções que lêem o vetor da entrada padrão
@@ -71,6 +73,14 @@ vetor clonaVetor (vetor v, int n, size_t sz);
 // Funções dos diversos algoritmos de Ordenação
 //
 /////////////////////////////////////////////////////
+
+// Funções para conferir se o vetor está ordenado
+bool estaOrdenado (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+bool INTestaOrdenado (vetor v, int n);
+bool CHARestaOrdenado (vetor v, int n);
+bool FLOATestaOrdenado (vetor v, int n);
+bool DOUBLEestaOrdenado (vetor v, int n);
 
 // SelectionSort
 void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));

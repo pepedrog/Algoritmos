@@ -7,7 +7,8 @@ CC = gcc $(STD) $(CFLAGS) $(INCLUDES)
 
 all: teste
 
-teste: selection.o insertion.o bubble.o cocktail.o aleatorio.o compara.o manipula.o get.o printa.o ../vetor.h
+teste: 	selection.o insertion.o bubble.o cocktail.o \
+		compara.o aleatorio.o confere.o manipula.o get.o printa.o ../vetor.h
 	$(CC) -o "teste" teste.c *.o
 
 printa.o: $(AUX)printaVetor.c
@@ -16,26 +17,29 @@ printa.o: $(AUX)printaVetor.c
 get.o: $(AUX)getVetor.c
 	$(CC) -c $(AUX)getVetor.c
 
-selection.o: ../selectionSort.c $(AUX)compara.h ../vetor.h
-	$(CC) -c ../selectionSort.c
-
-insertion.o: ../insertionSort.c $(AUX)compara.h ../vetor.h
-	$(CC) -c ../insertionSort.c
-
-bubble.o: ../bubbleSort.c $(AUX)compara.h ../vetor.h
-	$(CC) -c ../bubbleSort.c
-
-cocktail.o: ../cocktailSort.c $(AUX)compara.h ../vetor.h
-	$(CC) -c ../cocktailSort.c
-
 aleatorio.o: $(AUX)aleatorio.c
 	$(CC) -c $(AUX)aleatorio.c
 
 manipula.o: $(AUX)manipula.c
 	$(CC) -c $(AUX)manipula.c
 
-compara.o: $(AUX)compara.c $(AUX)compara.h
+confere.o: $(AUX)confere.c
+	$(CC) -c $(AUX)confere.c
+
+compara.o: $(AUX)compara.c
 	$(CC) -c $(AUX)compara.c
+	
+selection.o: ../selectionSort.c
+	$(CC) -c ../selectionSort.c
+
+insertion.o: ../insertionSort.c
+	$(CC) -c ../insertionSort.c
+
+bubble.o: ../bubbleSort.c
+	$(CC) -c ../bubbleSort.c
+
+cocktail.o: ../cocktailSort.c
+	$(CC) -c ../cocktailSort.c
 
 clean:
 	rm -f *.o* *.gch*

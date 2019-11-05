@@ -16,7 +16,7 @@ vetor iniciaVetor (int n, size_t sz) {
 // Recebe dois ponteiros e memória (está char* ao invés de void* para evitar warnings)
 // Equivalente ao memcpy() do string.h
 void copiaMemoria (char *dest, char *ori, size_t sz) {
-    for (size_t t = 0; t < sz; t++) *(dest + t) = *(ori + t);
+    while (sz--) *(dest + sz) = *(ori + sz);
 }
 
 // Faz v[i] = conteudo
@@ -48,4 +48,5 @@ void troca (vetor v, int i, int j, size_t sz) {
     copiaMemoria (aux, v(i), sz);
     copiaMemoria (v(i), v(j), sz);
     copiaMemoria (v(j), aux, sz);
+    free (aux);
 }
