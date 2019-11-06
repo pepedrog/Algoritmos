@@ -50,6 +50,9 @@ vetor DOUBLEaleatorio (int n, double min, double max);
 //
 /////////////////////////////////////////////////////
 
+// Copia conteudo de ori para dest
+void copiaMemoria (char *dest, char *ori, size_t sz);
+
 // Aloca memória pro vetor
 vetor iniciaVetor (int n, size_t sz);
 
@@ -121,4 +124,12 @@ void INTmergeSort (vetor v, int n);
 void CHARmergeSort (vetor v, int n);
 void FLOATmergeSort (vetor v, int n);
 void DOUBLEmergeSort (vetor v, int n);
+
+// MergeSort
+void quickSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTquickSort (vetor v, int n);
+void CHARquickSort (vetor v, int n);
+void FLOATquickSort (vetor v, int n);
+void DOUBLEquickSort (vetor v, int n);
 #endif

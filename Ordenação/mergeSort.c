@@ -9,6 +9,7 @@
 // - Intercalar as duas                                                                //
 //                                                                                     //
 // É um algoritmo de ordenação estável e consome tempo O(n log(n)) em qualquer caso.   //
+// E espaço extra O(n).                                                                //
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -23,7 +24,7 @@
 void mergeSortRec (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *));
 
 // Função que intercala a primeira metade com a segunda metade
-void merge (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *));
+void intercala (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *));
 
 // Ordena o vetor v com a ordem estabelecida pela função compara
 // Função handler do mergeSort
@@ -38,11 +39,10 @@ void mergeSortRec (vetor v, int ini, int fim, size_t sz, int (*compara) (const v
     // Ordena as duas metades
     mergeSortRec (v, ini, meio, sz, compara);
     mergeSortRec (v, meio, fim, sz, compara);
-    // Intercala
-    merge (v, ini, fim, sz, compara);
+    intercala (v, ini, fim, sz, compara);
 }
 
-void merge (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
+void intercala (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
     vetor aux = iniciaVetor (fim - ini, sz);
     int meio = (ini + fim) / 2;
     int ini1 = ini;

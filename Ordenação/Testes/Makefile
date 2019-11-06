@@ -7,7 +7,7 @@ CC = gcc $(STD) $(CFLAGS) $(INCLUDES)
 
 all: teste
 
-teste: 	selection.o insertion.o bubble.o cocktail.o merge.o \
+teste: 	selection.o insertion.o bubble.o cocktail.o merge.o quick.o \
 		compara.o aleatorio.o confere.o manipula.o get.o printa.o ../vetor.h
 	$(CC) -o "teste" teste.c *.o
 
@@ -43,6 +43,9 @@ cocktail.o: ../cocktailSort.c
 
 merge.o: ../mergeSort.c
 	$(CC) -c ../mergeSort.c
+
+quick.o: ../quickSort.c
+	$(CC) -c ../quickSort.c
 
 clean:
 	rm -f *.o* *.gch*

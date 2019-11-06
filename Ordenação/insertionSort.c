@@ -19,10 +19,6 @@
 
 #define v(i) ((char *) v + (i) * sz)
 
-// Equivalente a memcpy(), implementado em manipula.c
-// dest = ori;
-void copiaMemoria (char *dest, char *ori, size_t sz);
-
 // Ordena o vetor v com a ordem estabelecida pela função compara
 void insertionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
     int i, j;
