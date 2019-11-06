@@ -34,24 +34,25 @@ void quickSort (vetor v, int n, size_t sz, int (*compara) (const void *, const v
 
 void quickSortRec (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
     // Base da recursão, vetor unitario
-    if (ini == fim - 1) return;
+    if (ini >= fim - 1) return;
     // Particiona o vetor
     int meio = particiona (v, ini, fim, sz, compara);
     // Ordena as duas 'metades' (geralmente não têem o mesmo tamanho)
     quickSortRec (v, ini, meio, sz, compara);
     quickSortRec (v, meio + 1, fim, sz, compara);
+
 }
 
 int particiona (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
-    int i = fim;
+    int i = ini + 1;
     // O pivo será o v[ini], por padrão
-    // Coloca todos os elementos maiores que o pivo no final do vetor
-    for (int j = ini + 1; j < fim - 1; j++)
-        if (compara (v(j), v(ini)) > 0)
-            troca (v, --i, j, sz);
-    // Poe o pivo no meio
-    troca (v, ini, i, sz);
-    return i;
+    // Coloca todos os elementos menores que o pivo no começo do vetor
+    for (int j = ini + 1; j < fim; j++)
+        if (compara (v(j), v(ini)) < 0)
+            troca (v, i++, j, sz);
+    // Põe o pivo no meio
+    troca (v, ini, i - 1, sz);
+    return i - 1;
 }
 
 void INTquickSort (vetor v, int n) {

@@ -7,8 +7,8 @@ CC = gcc $(STD) $(CFLAGS) $(INCLUDES)
 
 all: teste
 
-teste: 	selection.o insertion.o bubble.o cocktail.o merge.o quick.o \
-		compara.o aleatorio.o confere.o manipula.o get.o printa.o ../vetor.h
+teste: 	selectionSort.o insertionSort.o bubbleSort.o cocktailSort.o mergeSort.o quickSort.o \
+		compara.o aleatorio.o confere.o manipula.o getVetor.o printaVetor.o teste.c ../vetor.h
 	$(CC) -o "teste" teste.c *.o
 
 printa.o: $(AUX)printaVetor.c
@@ -29,22 +29,22 @@ confere.o: $(AUX)confere.c
 compara.o: $(AUX)compara.c
 	$(CC) -c $(AUX)compara.c
 	
-selection.o: ../selectionSort.c
+selectionSort.o: ../selectionSort.c
 	$(CC) -c ../selectionSort.c
 
-insertion.o: ../insertionSort.c
+insertionSort.o: ../insertionSort.c
 	$(CC) -c ../insertionSort.c
 
-bubble.o: ../bubbleSort.c
+bubbleSort.o: ../bubbleSort.c
 	$(CC) -c ../bubbleSort.c
 
-cocktail.o: ../cocktailSort.c
+cocktailSort.o: ../cocktailSort.c
 	$(CC) -c ../cocktailSort.c
 
-merge.o: ../mergeSort.c
+mergeSort.o: ../mergeSort.c
 	$(CC) -c ../mergeSort.c
 
-quick.o: ../quickSort.c
+quickSort.o: ../quickSort.c
 	$(CC) -c ../quickSort.c
 
 clean:
