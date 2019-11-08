@@ -11,10 +11,10 @@ teste: 	selectionSort.o insertionSort.o bubbleSort.o cocktailSort.o mergeSort.o 
 		compara.o aleatorio.o confere.o manipula.o getVetor.o printaVetor.o teste.c ../vetor.h
 	$(CC) -o "teste" teste.c *.o
 
-printa.o: $(AUX)printaVetor.c
+printaVetor.o: $(AUX)printaVetor.c
 	$(CC) -c $(AUX)printaVetor.c
 
-get.o: $(AUX)getVetor.c
+getVetor.o: $(AUX)getVetor.c
 	$(CC) -c $(AUX)getVetor.c
 
 aleatorio.o: $(AUX)aleatorio.c
