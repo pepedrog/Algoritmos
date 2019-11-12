@@ -32,12 +32,15 @@ int main (void) {
     printf ("MergeSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado\n");
 
+<<<<<<< HEAD
     copiaVetor (ordena, v, n, sizeof (int));
     t = clock();
     INTheapSort (ordena, n);
     printf ("HeapSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado\n");
 
+=======
+>>>>>>> e94a65fc8ac4c40aee97aa9e17d4f9e074cce454
     t = clock();
     INTselectionSort (ordena, n);
     printf ("SelectionSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);

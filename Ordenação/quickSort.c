@@ -39,10 +39,11 @@ void quickSortRec (vetor v, int ini, int fim, size_t sz, int (*compara) (const v
     // Ordena as duas 'metades' (geralmente não têem o mesmo tamanho)
     quickSortRec (v, ini, meio, sz, compara);
     quickSortRec (v, meio + 1, fim, sz, compara);
-
 }
 
 int particiona (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
+    // Sorteia o pivo
+    troca (v, ini, ini + rand() / RAND_MAX * (fim - 1 - ini), sz);
     int i = ini + 1;
     // O pivo será o v[ini], por padrão
     // Coloca todos os elementos menores que o pivo no começo do vetor
