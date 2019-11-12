@@ -125,11 +125,20 @@ void CHARmergeSort (vetor v, int n);
 void FLOATmergeSort (vetor v, int n);
 void DOUBLEmergeSort (vetor v, int n);
 
-// MergeSort
+// QuickSort
 void quickSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 
 void INTquickSort (vetor v, int n);
 void CHARquickSort (vetor v, int n);
 void FLOATquickSort (vetor v, int n);
 void DOUBLEquickSort (vetor v, int n);
+
+// HeapSort
+void heapSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTheapSort (vetor v, int n);
+void CHARheapSort (vetor v, int n);
+void FLOATheapSort (vetor v, int n);
+void DOUBLEheapSort (vetor v, int n);
+
 #endif

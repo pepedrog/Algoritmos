@@ -2,7 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "../vetor.h"
-
+#include "../FunçõesAuxiliares/compara.h"
 int main (void) {
     int n;
     clock_t t;
@@ -14,6 +14,11 @@ int main (void) {
     // INTprintaVetor (v, n);
 
     vetor ordena = clonaVetor (v, n, sizeof (int));
+    
+    t = clock();
+    qsort (ordena, n, sizeof (int), INTcompara);
+    printf ("QuickSort C: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
+    if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado\n");
 
     copiaVetor (ordena, v, n, sizeof (int));
     t = clock();
@@ -29,8 +34,8 @@ int main (void) {
 
     copiaVetor (ordena, v, n, sizeof (int));
     t = clock();
-    INTcocktailSort (ordena, n);
-    printf ("CocktailSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
+    INTheapSort (ordena, n);
+    printf ("HeapSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado\n");
 
     t = clock();
@@ -42,6 +47,12 @@ int main (void) {
     t = clock();
     INTinsertionSort (ordena, n);
     printf ("InsertionSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
+    if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado\n");
+
+    copiaVetor (ordena, v, n, sizeof (int));
+    t = clock();
+    INTcocktailSort (ordena, n);
+    printf ("CocktailSort: %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado\n");
 
     copiaVetor (ordena, v, n, sizeof (int));
