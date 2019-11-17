@@ -38,12 +38,18 @@ void quickSortRec (vetor v, int ini, int fim, size_t sz, int (*compara) (const v
     // Particiona o vetor
     int meio = particiona (v, ini, fim, sz, compara);
     // Ordena as duas 'metades' (geralmente não têem o mesmo tamanho)
-    quickSortRec (v, ini, meio, sz, compara);
-    quickSortRec (v, meio + 1, fim, sz, compara);
+    // Ordena a maior metade primeiro, para pilha de recursão ficar menor
+    if (meio - ini > fim - meio) {
+        quickSortRec (v, ini, meio, sz, compara);
+        quickSortRec (v, meio + 1, fim, sz, compara);
+    } else {
+        quickSortRec (v, meio + 1, fim, sz, compara);
+        quickSortRec (v, ini, meio, sz, compara);
+    }
 }
 
 int particiona (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
-    // Sorteia o pivo
+    // Sorteia o pivo e coloca no começo
     troca (v, ini, ini + rand() / RAND_MAX * (fim - 1 - ini), sz);
     int i = ini + 1;
     // O pivo será o v[ini], por padrão

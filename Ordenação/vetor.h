@@ -125,7 +125,7 @@ void CHARmergeSort (vetor v, int n);
 void FLOATmergeSort (vetor v, int n);
 void DOUBLEmergeSort (vetor v, int n);
 
-// MergeSort
+// QuickSort
 void quickSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 
 void INTquickSort (vetor v, int n);
