@@ -5,17 +5,16 @@
 //                                                                                     //
 // Algoritmo de ordenação baseado na seguinte ideia:                                   //
 // - Dividir o vetor em duas partes, separadas por um pivô                             //
-// - A primeira parte com elementos estritamente menores que que segunda               //
-// - Ordenar cada parte                                                                //
+// - A primeira parte com elementos estritamente menores que a segunda                 //
+// - Ordenar cada parte recursivamente                                                 //
 //                                                                                     //
-// É um algoritmo de ordenação estável e consome tempo O(n log(n)) no caso             //
+// É um algoritmo de ordenação estável (?) e consome tempo O(n log(n)) no caso         //
 // e O(n²) no pior caso.                                                               //
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
 #include "FunçõesAuxiliares/compara.h" // Funções de comparação pros tipos primitivos
 #include "vetor.h" // Definição do vetor e troca()
-#include <stdlib.h> // free()
 
 #define v(i) ((char *) v + (i) * sz)
 #define aux(i) ((char *) aux + (i) * sz)
