@@ -34,7 +34,7 @@ void mergeSort (vetor v, int n, size_t sz, int (*compara) (const void *, const v
 
 void mergeSortRec (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
     // Base da recursão, vetor unitario
-    if (ini == fim - 1) return;
+    if (ini >= fim - 1) return;
     int meio = (ini + fim) / 2;
     // Ordena as duas metades
     mergeSortRec (v, ini, meio, sz, compara);

@@ -29,13 +29,31 @@ void rebaixa (heap h, int n, size_t sz, int (*compara) (const void *, const void
 
 // Ordena o vetor v com a ordem estabelecida pela função compara
 void heapSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
+    INTprintaVetor (v, n);
     heapfica (v, n, sz, compara);
+    INTprintaVetor (v, n);
     while (n--) {
         troca (v, 0, n, sz);
         rebaixa (v, n, sz, compara);
     }
 }
+int isheap (heap h, int n, size_t sz, int (*compara) (const void *, const void *)) {
+    for (int i = 0; i < n; i++) {
+        int filho = i;
+        if (filho % 2 == 1) filho ++;
+        int pai = (filho / 2) - 1;
+        while (pai >= 0) {
+            printf ("filho é %d pai é %d\n", filho, pai);
+            if (compara(h(pai), h(filho)) < 0) return 0;
+            filho = pai;
+            if (filho % 2 == 1) filho ++;
+            int pai = (filho / 2) - 1;
 
+            if (filho == 0) break;
+        }
+    }
+    return 1;
+}
 void heapfica (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
     // Considera o final do vetor um heap e vai crescendo ele
     for (int i = n - 1; i >= 0; i--) 
@@ -43,6 +61,7 @@ void heapfica (vetor v, int n, size_t sz, int (*compara) (const void *, const vo
 }
 
 void rebaixa (heap h, int n, size_t sz, int (*compara) (const void *, const void *)) {
+    INTprintaVetor (h, n);
     int pai = 0, filho = 1;
     while (filho < n) {
         // Se o pai for maior que o filho, troca
@@ -52,6 +71,7 @@ void rebaixa (heap h, int n, size_t sz, int (*compara) (const void *, const void
         pai = filho;
         filho = 2*pai + 1;
     }
+    if (isheap (h, n, sz, compara)) printf ("AAA\n");
 }
 
 void INTheapSort (vetor v, int n) {
