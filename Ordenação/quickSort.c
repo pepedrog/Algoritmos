@@ -94,8 +94,8 @@ void quickSortRecOtim1 (vetor v, int ini, int fim, size_t sz, int (*compara) (co
     int meio = particionaAleatorio (v, ini, fim, sz, compara);
     // Ordena as duas 'metades' (geralmente não têem o mesmo tamanho)
     // Ordena a maior metade primeiro, para pilha de recursão ficar menor
-    quickSortRec (v, ini, meio, sz, compara);
-    quickSortRec (v, meio + 1, fim, sz, compara);
+    quickSortRecOtim1 (v, ini, meio, sz, compara);
+    quickSortRecOtim1 (v, meio + 1, fim, sz, compara);
 }
 
 void quickSortOtim1 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
@@ -119,13 +119,13 @@ void quickSortRecOtim2 (vetor v, int ini, int fim, size_t sz, int (*compara) (co
     // Particiona o vetor (sortrando o pivo)
     int meio = particionaAleatorio (v, ini, fim, sz, compara);
     // Ordena as duas 'metades' (geralmente não têem o mesmo tamanho)
-    // Ordena a maior metade primeiro, para pilha de recursão ficar menor
-    if (meio - ini > fim - meio) {
-        quickSortRec (v, ini, meio, sz, compara);
-        quickSortRec (v, meio + 1, fim, sz, compara);
+    // Ordena a menor metade primeiro, para pilha de recursão ficar menor
+    if (meio - ini < fim - meio) {
+        quickSortRecOtim2 (v, ini, meio, sz, compara);
+        quickSortRecOtim2 (v, meio + 1, fim, sz, compara);
     } else {
-        quickSortRec (v, meio + 1, fim, sz, compara);
-        quickSortRec (v, ini, meio, sz, compara);
+        quickSortRecOtim2 (v, meio + 1, fim, sz, compara);
+        quickSortRecOtim2 (v, ini, meio, sz, compara);
     }
 }
 
@@ -144,31 +144,38 @@ void DOUBLEquickSortOtim2 (vetor v, int n) { quickSortOtim2 (v, n, sizeof (doubl
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-void quickSortRecOtim3 (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
-    // Base da recursão, vetor unitario
-    if (ini >= fim - 1) return;
-    if (fim - ini < 10) {
+void quickSortRecOtim3 (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *), int tamInsert) {
+    // Vetor pequeno -> insertionSort
+    if (fim - ini < tamInsert) {
         insertionSort (v(ini), fim - ini, sz, compara);
         return;
     }
     // Particiona o vetor (sortrando o pivo)
     int meio = particionaAleatorio (v, ini, fim, sz, compara);
     // Ordena as duas 'metades' (geralmente não têem o mesmo tamanho)
-    // Ordena a maior metade primeiro, para pilha de recursão ficar menor
-    if (meio - ini > fim - meio) {
-        quickSortRec (v, ini, meio, sz, compara);
-        quickSortRec (v, meio + 1, fim, sz, compara);
+    // Ordena a menor metade primeiro, para pilha de recursão ficar menor
+    if (meio - ini < fim - meio) {
+        quickSortRecOtim3 (v, ini, meio, sz, compara, tamInsert);
+        quickSortRecOtim3 (v, meio + 1, fim, sz, compara, tamInsert);
     } else {
-        quickSortRec (v, meio + 1, fim, sz, compara);
-        quickSortRec (v, ini, meio, sz, compara);
+        quickSortRecOtim3 (v, meio + 1, fim, sz, compara, tamInsert);
+        quickSortRecOtim3 (v, ini, meio, sz, compara, tamInsert);
     }
 }
 
 void quickSortOtim3 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
-    quickSortRecOtim3 (v, 0, n, sz, compara);
+    quickSortRecOtim3 (v, 0, n, sz, compara, n / 75);
 }
 
 void INTquickSortOtim3 (vetor v, int n) { quickSortOtim3 (v, n, sizeof (int), INTcompara); }
 void CHARquickSortOtim3 (vetor v, int n) { quickSortOtim3 (v, n, sizeof (char), CHARcompara); }
 void FLOATquickSortOtim3 (vetor v, int n) { quickSortOtim3 (v, n, sizeof (float), FLOATcompara); }
 void DOUBLEquickSortOtim3 (vetor v, int n) { quickSortOtim3 (v, n, sizeof (double), DOUBLEcompara); }
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                     //
+// Otimização 4 - Implementar a própria pilha - dispensar a recursão                   //
+// não farei aqui, código bastante confuso, checar a implementação do qsort:           //
+// https://code.woboq.org/userspace/glibc/stdlib/qsort.c.html#_quicksort               //                                     //
+//                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////

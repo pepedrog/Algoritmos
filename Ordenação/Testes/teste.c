@@ -15,7 +15,7 @@ int main (void) {
     // INTprintaVetor (v, n);
 
     vetor ordena = clonaVetor (v, n, sizeof (int));
-    
+    /*
     t = clock();
     INTquickSort (ordena, n);
     printf ("QuickSort 0:   %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
@@ -32,7 +32,7 @@ int main (void) {
     INTquickSortOtim2 (ordena, n);
     printf ("QuickSort 2:   %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!INTestaOrdenado (ordena, n)) printf ("ERRO: vetor não ordenado\n");
-
+*/
     copiaVetor (ordena, v, n, sizeof (int));
     t = clock();
     INTquickSortOtim3 (ordena, n);
