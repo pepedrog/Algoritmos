@@ -28,18 +28,7 @@ void bubbleSort (vetor v, int n, size_t sz, int (*compara) (const void *, const 
                 troca (v, i - 1, i, sz);
 }
 
-void INTbubbleSort (vetor v, int n) {
-    bubbleSort (v, n, sizeof (int), INTcompara);
-}
-
-void FLOATbubbleSort (vetor v, int n) {
-    bubbleSort (v, n, sizeof (float), FLOATcompara);
-}
-
-void DOUBLEbubbleSort (vetor v, int n) {
-    bubbleSort (v, n, sizeof (double), DOUBLEcompara);
-}
-
-void CHARbubbleSort (vetor v, int n) {
-    bubbleSort (v, n, sizeof (char), CHARcompara);
-}
+void INTbubbleSort (vetor v, int n) { bubbleSort (v, n, sizeof (int), INTcompara); }
+void CHARbubbleSort (vetor v, int n) { bubbleSort (v, n, sizeof (char), CHARcompara); }
+void FLOATbubbleSort (vetor v, int n) { bubbleSort (v, n, sizeof (float), FLOATcompara); }
+void DOUBLEbubbleSort (vetor v, int n) { bubbleSort (v, n, sizeof (double), DOUBLEcompara); }

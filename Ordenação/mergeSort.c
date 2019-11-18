@@ -63,18 +63,7 @@ void intercala (vetor v, int ini, int fim, size_t sz, int (*compara) (const void
     free (aux);
 }
 
-void INTmergeSort (vetor v, int n) {
-    mergeSort (v, n, sizeof (int), INTcompara);
-}
-
-void FLOATmergeSort (vetor v, int n) {
-    mergeSort (v, n, sizeof (float), FLOATcompara);
-}
-
-void DOUBLEmergeSort (vetor v, int n) {
-    mergeSort (v, n, sizeof (double), DOUBLEcompara);
-}
-
-void CHARmergeSort (vetor v, int n) {
-    mergeSort (v, n, sizeof (char), CHARcompara);
-}
+void INTmergeSort (vetor v, int n) { mergeSort (v, n, sizeof (int), INTcompara); }
+void CHARmergeSort (vetor v, int n) { mergeSort (v, n, sizeof (char), CHARcompara); }
+void FLOATmergeSort (vetor v, int n) { mergeSort (v, n, sizeof (float), FLOATcompara); }
+void DOUBLEmergeSort (vetor v, int n) { mergeSort (v, n, sizeof (double), DOUBLEcompara); }

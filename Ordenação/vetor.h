@@ -133,6 +133,32 @@ void CHARquickSort (vetor v, int n);
 void FLOATquickSort (vetor v, int n);
 void DOUBLEquickSort (vetor v, int n);
 
+// Otimizacoes do QuickSort
+
+// Pivo aleatorio
+void quickSortOtim1 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTquickSortOtim1 (vetor v, int n);
+void CHARquickSortOtim1 (vetor v, int n);
+void FLOATquickSortOtim1 (vetor v, int n);
+void DOUBLEquickSortOtim1 (vetor v, int n);
+
+// Redução da pilha de execução
+void quickSortOtim2 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTquickSortOtim2 (vetor v, int n);
+void CHARquickSortOtim2 (vetor v, int n);
+void FLOATquickSortOtim2 (vetor v, int n);
+void DOUBLEquickSortOtim2 (vetor v, int n);
+
+// InsertionSort em subvetores pequenos
+void quickSortOtim3 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+
+void INTquickSortOtim3 (vetor v, int n);
+void CHARquickSortOtim3 (vetor v, int n);
+void FLOATquickSortOtim3 (vetor v, int n);
+void DOUBLEquickSortOtim3 (vetor v, int n);
+
 // HeapSort
 void heapSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 

@@ -32,18 +32,7 @@ void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, con
     }
 }
 
-void INTselectionSort (vetor v, int n) {
-    selectionSort (v, n, sizeof (int), INTcompara);
-}
-
-void FLOATselectionSort (vetor v, int n) {
-    selectionSort (v, n, sizeof (float), FLOATcompara);
-}
-
-void DOUBLEselectionSort (vetor v, int n) {
-    selectionSort (v, n, sizeof (double), DOUBLEcompara);
-}
-
-void CHARselectionSort (vetor v, int n) {
-    selectionSort (v, n, sizeof (char), CHARcompara);
-}
+void INTselectionSort (vetor v, int n) { selectionSort (v, n, sizeof (int), INTcompara); }
+void CHARselectionSort (vetor v, int n) { selectionSort (v, n, sizeof (char), CHARcompara); }
+void FLOATselectionSort (vetor v, int n) { selectionSort (v, n, sizeof (float), FLOATcompara); }
+void DOUBLEselectionSort (vetor v, int n) { selectionSort (v, n, sizeof (double), DOUBLEcompara); }

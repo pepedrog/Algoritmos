@@ -38,18 +38,7 @@ void cocktailSort (vetor v, int n, size_t sz, int (*compara) (const void *, cons
     }
 }
 
-void INTcocktailSort (vetor v, int n) {
-    cocktailSort (v, n, sizeof (int), INTcompara);
-}
-
-void FLOATcocktailSort (vetor v, int n) {
-    cocktailSort (v, n, sizeof (float), FLOATcompara);
-}
-
-void DOUBLEcocktailSort (vetor v, int n) {
-    cocktailSort (v, n, sizeof (double), DOUBLEcompara);
-}
-
-void CHARcocktailSort (vetor v, int n) {
-    cocktailSort (v, n, sizeof (char), CHARcompara);
-}
+void INTcocktailSort (vetor v, int n) { cocktailSort (v, n, sizeof (int), INTcompara); }
+void CHARcocktailSort (vetor v, int n) { cocktailSort (v, n, sizeof (char), CHARcompara); }
+void FLOATcocktailSort (vetor v, int n) { cocktailSort (v, n, sizeof (float), FLOATcompara); }
+void DOUBLEcocktailSort (vetor v, int n) { cocktailSort (v, n, sizeof (double), DOUBLEcompara); }

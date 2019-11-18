@@ -80,18 +80,7 @@ void eleva (heap h, int n, size_t sz, int (*compara) (const void *, const void *
     }
 }
 
-void INTheapSort (vetor v, int n) {
-    heapSort (v, n, sizeof (int), INTcompara);
-}
-
-void FLOATheapSort (vetor v, int n) {
-    heapSort (v, n, sizeof (float), FLOATcompara);
-}
-
-void DOUBLEheapSort (vetor v, int n) {
-    heapSort (v, n, sizeof (double), DOUBLEcompara);
-}
-
-void CHARheapSort (vetor v, int n) {
-    heapSort (v, n, sizeof (char), CHARcompara);
-}
+void INTheapSort (vetor v, int n) { heapSort (v, n, sizeof (int), INTcompara); }
+void CHARheapSort (vetor v, int n) { heapSort (v, n, sizeof (char), CHARcompara); }
+void FLOATheapSort (vetor v, int n) { heapSort (v, n, sizeof (float), FLOATcompara); }
+void DOUBLEheapSort (vetor v, int n) { heapSort (v, n, sizeof (double), DOUBLEcompara); }
