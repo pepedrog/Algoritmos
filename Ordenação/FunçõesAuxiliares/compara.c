@@ -11,22 +11,22 @@
 
 #include "compara.h"
 
-int INTcompara (const void *a, const void *b) {
+int int_compara (const void *a, const void *b) {
     // retorna a - b
     return *((int *) a) - *((int *) b);
 }
 
-int FLOATcompara (const void *a, const void *b) {
+int float_compara (const void *a, const void *b) {
     // retorna a - b
     return *((float *) a) - *((float *) b);
 }
 
-int DOUBLEcompara (const void *a, const void *b) {
+int double_compara (const void *a, const void *b) {
     // retorna a - b
     return *((double *) a) - *((double *) b);
 }
 
-int CHARcompara (const void *a, const void *b) {
+int char_compara (const void *a, const void *b) {
     // retorna a - b
     return *((char *) a) - *((char *) b);
 }

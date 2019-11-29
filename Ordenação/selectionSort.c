@@ -31,8 +31,3 @@ void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, con
         troca (v, i, min, sz);
     }
 }
-
-void INTselectionSort (vetor v, int n) { selectionSort (v, n, sizeof (int), INTcompara); }
-void CHARselectionSort (vetor v, int n) { selectionSort (v, n, sizeof (char), CHARcompara); }
-void FLOATselectionSort (vetor v, int n) { selectionSort (v, n, sizeof (float), FLOATcompara); }
-void DOUBLEselectionSort (vetor v, int n) { selectionSort (v, n, sizeof (double), DOUBLEcompara); }

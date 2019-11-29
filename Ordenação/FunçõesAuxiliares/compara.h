@@ -7,13 +7,13 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-int INTcompara (const void *a, const void *b);
+int int_compara (const void *a, const void *b);
 
-int FLOATcompara (const void *a, const void *b);
+int float_compara (const void *a, const void *b);
 
-int DOUBLEcompara (const void *a, const void *b);
+int double_compara (const void *a, const void *b);
 
-int CHARcompara (const void *a, const void *b);
+int char_compara (const void *a, const void *b);
 /*
 int STRINGcompara (const void *a, const void *b);
 */

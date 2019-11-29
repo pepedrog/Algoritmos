@@ -77,94 +77,20 @@ vetor clonaVetor (vetor v, int n, size_t sz);
 //
 /////////////////////////////////////////////////////
 
-// Funções para conferir se o vetor está ordenado
+// Macro para facilitar a chamada de tipos específicos
+#define ordenaTipo(v, n, tipo, algoritmo) algoritmo(v, n, sizeof(tipo), tipo##_compara)
+
 bool estaOrdenado (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 
-bool INTestaOrdenado (vetor v, int n);
-bool CHARestaOrdenado (vetor v, int n);
-bool FLOATestaOrdenado (vetor v, int n);
-bool DOUBLEestaOrdenado (vetor v, int n);
-
-// SelectionSort
 void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTselectionSort (vetor v, int n);
-void CHARselectionSort (vetor v, int n);
-void FLOATselectionSort (vetor v, int n);
-void DOUBLEselectionSort (vetor v, int n);
-
-// InserionSort
 void insertionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTinsertionSort (vetor v, int n);
-void CHARinsertionSort (vetor v, int n);
-void FLOATinsertionSort (vetor v, int n);
-void DOUBLEinsertionSort (vetor v, int n);
-
-// BubbleSort
 void bubbleSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTbubbleSort (vetor v, int n);
-void CHARbubbleSort (vetor v, int n);
-void FLOATbubbleSort (vetor v, int n);
-void DOUBLEbubbleSort (vetor v, int n);
-
-// CocktailSort
 void cocktailSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTcocktailSort (vetor v, int n);
-void CHARcocktailSort (vetor v, int n);
-void FLOATcocktailSort (vetor v, int n);
-void DOUBLEcocktailSort (vetor v, int n);
-
-// MergeSort
 void mergeSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTmergeSort (vetor v, int n);
-void CHARmergeSort (vetor v, int n);
-void FLOATmergeSort (vetor v, int n);
-void DOUBLEmergeSort (vetor v, int n);
-
-// QuickSort
 void quickSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTquickSort (vetor v, int n);
-void CHARquickSort (vetor v, int n);
-void FLOATquickSort (vetor v, int n);
-void DOUBLEquickSort (vetor v, int n);
-
-// Otimizacoes do QuickSort
-
-// Pivo aleatorio
 void quickSortOtim1 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTquickSortOtim1 (vetor v, int n);
-void CHARquickSortOtim1 (vetor v, int n);
-void FLOATquickSortOtim1 (vetor v, int n);
-void DOUBLEquickSortOtim1 (vetor v, int n);
-
-// Redução da pilha de execução
 void quickSortOtim2 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTquickSortOtim2 (vetor v, int n);
-void CHARquickSortOtim2 (vetor v, int n);
-void FLOATquickSortOtim2 (vetor v, int n);
-void DOUBLEquickSortOtim2 (vetor v, int n);
-
-// InsertionSort em subvetores pequenos
 void quickSortOtim3 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTquickSortOtim3 (vetor v, int n);
-void CHARquickSortOtim3 (vetor v, int n);
-void FLOATquickSortOtim3 (vetor v, int n);
-void DOUBLEquickSortOtim3 (vetor v, int n);
-
-// HeapSort
 void heapSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-
-void INTheapSort (vetor v, int n);
-void CHARheapSort (vetor v, int n);
-void FLOATheapSort (vetor v, int n);
-void DOUBLEheapSort (vetor v, int n);
 
 #endif

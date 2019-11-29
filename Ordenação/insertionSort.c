@@ -33,8 +33,3 @@ void insertionSort (vetor v, int n, size_t sz, int (*compara) (const void *, con
     }
     free (atual);
 }
-
-void INTinsertionSort (vetor v, int n) { insertionSort (v, n, sizeof (int), INTcompara); }
-void CHARinsertionSort (vetor v, int n) { insertionSort (v, n, sizeof (char), CHARcompara); }
-void FLOATinsertionSort (vetor v, int n) { insertionSort (v, n, sizeof (float), FLOATcompara); }
-void DOUBLEinsertionSort (vetor v, int n) { insertionSort (v, n, sizeof (double), DOUBLEcompara); }

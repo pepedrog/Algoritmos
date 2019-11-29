@@ -20,17 +20,6 @@ typedef vetor heap;
 
 #define v(i) ((char *) v + (i) * sz)
 #define h(i) ((char *) h + (i) * sz)
-int isheap (heap h, int n, size_t sz, int (*compara) (const void *, const void *)) {
-    for (int i = 0; i < n; i++) {
-        int pai = i;
-        int filho1 = 2*i + 1;
-        int filho2 = 2*i + 2;
-        if (filho1 < n && compara(h(pai), h(filho1)) < 0){ printf ("pai %d menor que %d\n", *((int *)(h(pai))), *((int *)(h(filho1)))); return 0;}
-        if (filho2 < n && compara(h(pai), h(filho2)) < 0){ printf ("pai %d menor que %d\n", *((int *)(h(pai))), *((int *)(h(filho2)))); return 0;}
-
-    }
-    return 1;
-}
 
 // Transforma o vetor em um max-heap
 void heapfica (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
@@ -79,8 +68,3 @@ void eleva (heap h, int n, size_t sz, int (*compara) (const void *, const void *
         pai = (filho - 1) / 2;
     }
 }
-
-void INTheapSort (vetor v, int n) { heapSort (v, n, sizeof (int), INTcompara); }
-void CHARheapSort (vetor v, int n) { heapSort (v, n, sizeof (char), CHARcompara); }
-void FLOATheapSort (vetor v, int n) { heapSort (v, n, sizeof (float), FLOATcompara); }
-void DOUBLEheapSort (vetor v, int n) { heapSort (v, n, sizeof (double), DOUBLEcompara); }
