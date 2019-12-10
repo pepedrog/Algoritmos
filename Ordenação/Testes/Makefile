@@ -7,7 +7,7 @@ CC = gcc $(STD) $(CFLAGS) $(INCLUDES)
 
 all: teste
 
-teste: 	selectionSort.o insertionSort.o bubbleSort.o cocktailSort.o mergeSort.o quickSort.o heapSort.o \
+teste: 	selectionSort.o insertionSort.o bubbleSort.o cocktailSort.o mergeSort.o quickSort.o heapSort.o countingSort.o \
 		compara.o aleatorio.o confere.o manipula.o getVetor.o printaVetor.o teste.c ../vetor.h
 	$(CC) -o "teste" teste.c *.o
 
@@ -49,6 +49,9 @@ quickSort.o: ../quickSort.c
 
 heapSort.o: ../heapSort.c
 	$(CC) -c ../heapSort.c
+
+countingSort.o: ../countingSort.c
+	$(CC) -c ../countingSort.c
 
 clean:
 	rm -f *.o* *.gch*

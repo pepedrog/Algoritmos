@@ -5,13 +5,13 @@
 #include "../FunçõesAuxiliares/compara.h"
 
 int main (int argc, char *argv[]) {
-    int n, m;
+    int n, k;
 
     clock_t t;
     printf ("\n");
-    scanf ("%d %d", &n, &m);
+    scanf ("%d %d", &n, &k);
     //vetor v = iniciaVetor (n, sizeof (int));
-    vetor v = INTaleatorio (n, 0, m);
+    vetor v = INTaleatorio (n, 0, k);
 
     // INTgetVetor (v, n);
     // INTprintaVetor (v, n);
@@ -81,6 +81,12 @@ int main (int argc, char *argv[]) {
     t = clock();
     ordenaTipo(v, n, int, bubbleSort);
     printf ("BubbleSort:    %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
+    if (!ordenaTipo(v, n, int, estaOrdenado)) printf ("ERRO: vetor não ordenado\n");
+
+    copiaVetor (ordena, v, n, sizeof (int));
+    t = clock();
+    countingSort((int *) v, n, k);
+    printf ("CountingSort:    %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!ordenaTipo(v, n, int, estaOrdenado)) printf ("ERRO: vetor não ordenado\n");
 
     free (ordena);

@@ -82,15 +82,16 @@ vetor clonaVetor (vetor v, int n, size_t sz);
 
 bool estaOrdenado (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 
-void selectionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-void insertionSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-void bubbleSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-void cocktailSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-void mergeSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-void quickSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void selectionSort  (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void insertionSort  (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void bubbleSort     (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void cocktailSort   (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void mergeSort      (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void quickSort      (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 void quickSortOtim1 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 void quickSortOtim2 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 void quickSortOtim3 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
-void heapSort (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void heapSort       (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void countingSort   (int *v, int n, int k);
 
 #endif

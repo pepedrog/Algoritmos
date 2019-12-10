@@ -13,12 +13,12 @@
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-#include "FunçõesAuxiliares/compara.h" // Funções de comparação pros tipos primitivos
 #include "vetor.h" // Definição do vetor e troca()
-#include <stdlib.h>
+#include <stdlib.h> // rand()
+
+#define MAX(A, B) (((A) > (B)) ? (A) : (B))
 
 #define v(i) ((char *) v + (i) * sz)
-#define aux(i) ((char *) aux + (i) * sz)
 
 // Função recursiva que realmente faz a ordenação
 void quickSortRec (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *));
@@ -149,7 +149,7 @@ void quickSortRecOtim3 (vetor v, int ini, int fim, size_t sz, int (*compara) (co
 }
 
 void quickSortOtim3 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
-    quickSortRecOtim3 (v, 0, n, sz, compara, n / 75);
+    quickSortRecOtim3 (v, 0, n, sz, compara, MAX(n / 75, 1));
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
