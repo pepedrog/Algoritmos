@@ -129,9 +129,10 @@ void quickSortOtim2 (vetor v, int n, size_t sz, int (*compara) (const void *, co
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-void quickSortRecOtim3 (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *), int tamInsert) {
+#define TAM_INSERT 50
+void quickSortRecOtim3 (vetor v, int ini, int fim, size_t sz, int (*compara) (const void *, const void *)) {
     // Vetor pequeno -> insertionSort
-    if (fim - ini < tamInsert) {
+    if (fim - ini < TAM_INSERT) {
         insertionSort (v(ini), fim - ini, sz, compara);
         return;
     }
@@ -140,16 +141,16 @@ void quickSortRecOtim3 (vetor v, int ini, int fim, size_t sz, int (*compara) (co
     // Ordena as duas 'metades' (geralmente não têem o mesmo tamanho)
     // Ordena a menor metade primeiro, para pilha de recursão ficar menor
     if (meio - ini < fim - meio) {
-        quickSortRecOtim3 (v, ini, meio, sz, compara, tamInsert);
-        quickSortRecOtim3 (v, meio + 1, fim, sz, compara, tamInsert);
+        quickSortRecOtim3 (v, ini, meio, sz, compara);
+        quickSortRecOtim3 (v, meio + 1, fim, sz, compara);
     } else {
-        quickSortRecOtim3 (v, meio + 1, fim, sz, compara, tamInsert);
-        quickSortRecOtim3 (v, ini, meio, sz, compara, tamInsert);
+        quickSortRecOtim3 (v, meio + 1, fim, sz, compara);
+        quickSortRecOtim3 (v, ini, meio, sz, compara);
     }
 }
 
 void quickSortOtim3 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *)) {
-    quickSortRecOtim3 (v, 0, n, sz, compara, MAX(n / 75, 1));
+    quickSortRecOtim3 (v, 0, n, sz, compara);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////

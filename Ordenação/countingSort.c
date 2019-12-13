@@ -8,7 +8,7 @@
 // - Percorrer o vetor contando quantas vezes cada inteiro aparece                     //
 // - Reconstruir o vetor colocando a quantidade de cada inteiro em ordem               //
 //                                                                                     //
-// É um algoritmo de ordenação que consome tempo e espaço O(k*n) (pseudo-polinomial)   //
+// É um algoritmo de ordenação que consome tempo e espaço O(k + n) (pseudo-polinomial) //
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 

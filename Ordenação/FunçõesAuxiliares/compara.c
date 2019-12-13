@@ -9,8 +9,6 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#include "compara.h"
-
 int int_compara (const void *a, const void *b) {
     // retorna a - b
     return *((int *) a) - *((int *) b);

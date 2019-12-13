@@ -80,6 +80,12 @@ vetor clonaVetor (vetor v, int n, size_t sz);
 // Macro para facilitar a chamada de tipos específicos
 #define ordenaTipo(v, n, tipo, algoritmo) algoritmo(v, n, sizeof(tipo), tipo##_compara)
 
+// Funções de comparação dos tipos primitivos (implementei pra facilitar os testes)
+int int_compara (const void *a, const void *b);
+int char_compara (const void *a, const void *b);
+int float_compara (const void *a, const void *b);
+int double_compara (const void *a, const void *b);
+
 bool estaOrdenado (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 
 void selectionSort  (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));

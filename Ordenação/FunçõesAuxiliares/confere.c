@@ -1,5 +1,4 @@
 #include "../vetor.h"
-#include "compara.h"
 
 #define v(i) ((char *) v + (i) * sz)
 
