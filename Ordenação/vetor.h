@@ -1,3 +1,12 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                     //
+//               Biblioteca pra ordenação e manipulação de vetores abstratos           //
+//                                                                                     //
+// Prótotipos das funções que manipulam os vetores, com intuito geral de facilitar a   //
+// implementação dos algoritmos de ordenação                                           //
+//                                                                                     // 
+/////////////////////////////////////////////////////////////////////////////////////////
+
 // Esse ifndef previne que o conteúdo seja definido/incluido duas vezes
 #ifndef VETOR_H
 #define VETOR_H
@@ -10,7 +19,8 @@ typedef void* vetor;
 // size_t será o tamanho dos elementos do vetor
 typedef unsigned long size_t;
 
-typedef char bool;
+typedef int bool;
+
 /////////////////////////////////////////////////////
 //
 // Funções que lêem o vetor da entrada padrão
@@ -88,6 +98,10 @@ int double_compara (const void *a, const void *b);
 
 bool estaOrdenado (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 
+// Os algoritmos recebem o vetor, o número de elementos n, o tamanho dos elementos sz
+// e a função de comparação que definirá a ordem dos elementos
+
+// Para mais informações sobre cada algoritmo,olhar no arquivo .c de cada um
 void selectionSort  (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 void insertionSort  (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 void bubbleSort     (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
