@@ -18,3 +18,6 @@ Os algoritmos a serem implementados aqui são de algumas categorias (em constant
 - Programação Dinâmica (PD)
   - Exercícios avulsos de programação dinâmica que resolvem problemas legais
   
+O objetivo disso tudo é construir uma biblioteca pessoal, com códigos bem comentados! 
+Consolidando os aprendizados, facilitando o acesso a códigos e sua reutilização e estimulando novas descobertas no universo da programação
+  
