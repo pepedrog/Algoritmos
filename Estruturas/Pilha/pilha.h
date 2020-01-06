@@ -50,4 +50,7 @@ bool estaVazia (Pilha P);
 // Limpa todos os nós da pilha
 void limpa (Pilha P);
 
+// Retorna a quantidade de elementos na pilha (tempo linear)
+int tamanho (Pilha P);
+
 #endif
