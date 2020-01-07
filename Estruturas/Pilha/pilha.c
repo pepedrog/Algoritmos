@@ -1,27 +1,53 @@
 #include "pilha.h"
 
 // Empilha (push) na pilha P um elemento de tamanho sz
-void empilha (Pilha P, void *elemento, size_t sz) {
+void empilha (Pilha *P, void *elemento, size_t sz) {
+    *P = empilhaP (*P, elemento, sz);
+}
+
+// Empilha (push) o elemento de tamanho sz e retorna a nova pilha
+Pilha empilhaP (Pilha P, void *elemento, size_t sz) {
     // Cria um novo nó
-    struct no novo;
-    // Copia o elemento pro novo (faz um strcpy)
-    novo.valor = malloc(sz);
+    Pilha nova = malloc (sizeof (struct no));
+    nova->tamanho = sz;
+    nova->valor = malloc (sz);
     while (sz--)
-        ((char *) novo.valor)[sz] = ((char *) elemento)[sz];
-    // Coloca o topo da pilha como próximo 
-    novo.prox = P;
-    *P = novo;
+        ((char *) nova->valor)[sz] = ((char *) elemento)[sz];
+    nova->prox = P;
+    return nova;
 }
 
-// Desempilha (pop) e retorna o elemento do topo de P
-void *desempilha (Pilha P) {
-    if (P == NULL) printf ("Pilha já está vazia\n");
-    void *topo = P->valor;
-    P = P->prox;
-    return topo;
+// Desempilha (pop) o elemento do topo
+void desempilha (Pilha *P) {
+    *P = desempilhaP (*P);
 }
 
-// Verifica de a pilha está vazia
+// Desempilha (pop) o elemento do topo e retorna a nova pilha
+Pilha desempilhaP (Pilha P) {
+    if (P == NULL) return NULL;
+    Pilha aux = P->prox;
+    free (P->valor);
+    free (P);
+    return aux;
+}
+
+// Desempilha (pop) o elemento do topo e retorna o elemento desempilhado
+void *desempilhaE (Pilha *P) {
+    void * topo_aux = topo (*P);
+    desempilha (P);
+    return topo_aux;
+}
+
+// Retorna uma cópia do elemento do topo de P
+void *topo (Pilha P) {
+    if (P == NULL) return NULL;
+    void * copia = malloc (P->tamanho);
+    for (int i = 0; i < P->tamanho; i++) 
+        ((char *) copia)[i] = ((char *) P->valor)[i];
+    return copia;
+}
+
+// Verifica se a pilha está vazia
 bool estaVazia (Pilha P) {
     return P == NULL;
 }

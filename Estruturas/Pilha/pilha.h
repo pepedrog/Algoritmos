@@ -26,6 +26,7 @@ typedef int bool;
 // Estrutura do nó da lista / pilha
 struct no {
     void *valor; // Conteúdo do nó
+    size_t tamanho; // Tamanho em bytes do valor
     struct no *prox; // Ponteiro pro próximo nó
 };
 
@@ -38,19 +39,33 @@ typedef struct no * Pilha;
 //
 /////////////////////////////////////////////////////
 
-// Empilha (push) na pilha P um elemento de tamanho sz
-void empilha (Pilha P, void *elemento, size_t sz);
+// Empilha o elemento de tamanho sz na pilha P
+void empilha (Pilha *P, void *elemento, size_t sz);
 
-// Desempilha (pop) e retorna o elemento do topo de P
-void *desempilha (Pilha P);
+// Desempilha (pop) o topo de P
+void desempilha (Pilha *P);
 
-// Verifica de a pilha está vazia
+// Versões do empilha e desempilha (diferentes implementações)
+
+// Empilha o elemento de tamanho sz e retorna a nova pilha
+Pilha empilhaP (Pilha P, void *elemento, size_t sz);
+
+// Desempilha o topo de P e retorna uma cópia do elemento desempilhado
+void *desempilhaE (Pilha *P);
+
+// Desempilha o elemento do topo e retorna a nova pilha
+Pilha desempilhaP (Pilha P);
+
+// Retorna uma cópia do topo da pilha
+void *topo (Pilha P);
+
+// Verifica se a pilha está vazia
 bool estaVazia (Pilha P);
 
 // Limpa todos os nós da pilha
 void limpa (Pilha P);
 
-// Retorna a quantidade de elementos na pilha (tempo linear)
+// Retorna a quantidade de elementos na pilha
 int tamanho (Pilha P);
 
 #endif
