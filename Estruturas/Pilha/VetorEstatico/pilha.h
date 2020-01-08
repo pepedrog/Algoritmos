@@ -38,7 +38,12 @@ typedef struct pilha * Pilha;
 //
 /////////////////////////////////////////////////////
 
-// Empilha o elemento de tamanho P->tamanho na pilha P
+// Aloca uma pilha na memória, 
+// tamanho = tamanho dos elementos, max = tamanho da pilha
+Pilha criaPilha (size_t tamanho, int max);
+
+// Empilha um cópia do elemento de tamanho P->tamanho na pilha P
+// Se a pilha está cheia, não faz nada
 void empilha (Pilha P, void *elemento);
 
 // Desempilha (pop) o topo de P
@@ -54,7 +59,7 @@ void *topo (Pilha P);
 bool estaVazia (Pilha P);
 
 // Verifica se a pilha está cheia
-bool estaVazia (Pilha P);
+bool estaCheia (Pilha P);
 
 // Limpa a pilha da memória
 void limpa (Pilha P);
