@@ -53,10 +53,9 @@ bool estaVazia (Pilha P) {
 }
 
 // Limpa todos os nós da pilha
-void limpa (Pilha P) {
-    free (P->valor);
-    limpa (P->prox);
-    free (P);
+void limpa (Pilha *P) {
+    while (! estaVazia (*P))
+        desempilha (P);
 }
 
 // Retorna a quantidade de elementos na pilha (tempo linear)

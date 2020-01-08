@@ -63,7 +63,7 @@ void *topo (Pilha P);
 bool estaVazia (Pilha P);
 
 // Limpa todos os nós da pilha
-void limpa (Pilha P);
+void limpa (Pilha *P);
 
 // Retorna a quantidade de elementos na pilha
 int tamanho (Pilha P);
