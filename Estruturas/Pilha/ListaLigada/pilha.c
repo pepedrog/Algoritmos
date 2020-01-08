@@ -62,9 +62,8 @@ void limpa (Pilha P) {
 // Retorna a quantidade de elementos na pilha (tempo linear)
 int tamanho (Pilha P) {
     int tam = 0;
-    Pilha aux = P;
-    while (aux != NULL) {
-        aux = aux->prox;
+    while (P != NULL) {
+        P = P->prox;
         tam++;
     }
     return tam;

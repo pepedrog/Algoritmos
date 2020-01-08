@@ -14,8 +14,8 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 
 // Esse ifndef previne que o conteúdo seja definido/incluido duas vezes
-#ifndef PILHA_H
-#define PILHA_H
+#ifndef PILHA_LL_H
+#define PILHA_LL_H
 
 #include <stdlib.h> // size_t
 
