@@ -44,13 +44,13 @@ Pilha criaPilha (size_t tam_elemento);
 
 // Empilha um cópia do elemento de tamanho P->tamanho na pilha P
 // Se a pilha está cheia, não faz nada
-void empilha (Pilha *P, void *elemento);
+void empilha (Pilha P, void *elemento);
 
 // Desempilha (pop) o topo de P
-void desempilha (Pilha *P);
+void desempilha (Pilha P);
 
 // Desempilha o topo de P e retorna uma cópia do elemento desempilhado
-void *desempilhaE (Pilha *P);
+void *desempilhaE (Pilha P);
 
 // Retorna uma cópia do topo da pilha
 void *topo (Pilha P);
