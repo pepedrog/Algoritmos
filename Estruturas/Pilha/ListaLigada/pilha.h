@@ -5,12 +5,12 @@
 //                                                                                     //
 // Implementação da estrutura da pilha usando listas ligadas (implementação padrão),   // 
 // aonde o topo da pilha é o primeiro nó.                                              //
-// Junto das operações padrão da pilha e possíveis operações diferente que encontro    //
+// Junto das operações padrão da pilha e possíveis operações diferentes que encontro   //
 // por aí.                                                                             //
 //                                                                                     //    
 // Os valores da pilha serão abstratos (void *), pra fazer uma pilha de um tipo        //
 // específico é só trocar por int por exemplo.                                         //
-//                                                                                     // 
+//                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
 // Esse ifndef previne que o conteúdo seja definido/incluido duas vezes
