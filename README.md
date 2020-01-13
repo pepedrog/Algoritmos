@@ -9,4 +9,4 @@ Motivado pelo conteúdo das matérias do BCC, em particular pelos cursos mais pr
 
 A priori devo usar a linguagem C para implementar os algoritmos, a fim de entender mais a fundo o que ocorre por trás de cada algoritmo. Mas pode ser uma ótima oportunidade posterior implementar os códigos em várias linguagens!
 
-O material de consulta/inspiração, além das minhas notas de aula, tá no arquivo da bibliografia, um compilado dos melhores livros e sites ao longo do curso
+O material de consulta/inspiração, além das minhas notas de aula, tá no arquivo da bibliografia, um compilado dos melhores livros e sites que conheci ao longo do curso
