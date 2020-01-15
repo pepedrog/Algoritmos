@@ -1,11 +1,11 @@
 #include "fila.h"
 #include <stdio.h>
 
-// Programinha besta só pra testar a pilha
-// para compilar: gcc -o teste pilha.c teste.c pilha.h
+// Programinha besta só pra testar a fila
+// para compilar: gcc -o teste fila.c teste.c fila.h
 int main () {
     char *inicio; // Variável pra guardar o topo da pilha, tem que lembrar de dar free
-    Fila F = iniciaFila();
+    Fila F = criaFila();
     enfileira (F, "sera", 5);
     enfileira (F, "que", 4);
     enfileira (F, "vai", 4);

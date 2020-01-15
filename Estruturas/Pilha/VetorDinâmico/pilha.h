@@ -5,7 +5,7 @@
 //                                                                                     //
 // Implementação da estrutura da pilha usando um vetor dinâmico (muda de tamanho).     // 
 // Ele dobra de tamanho quando fica cheio e reduz quando fica muito vazio.             //
-// Junto das operações padrão da pilha e possíveis operações diferente que encontro    //
+// Junto das operações padrão da pilha e possíveis operações diferentes que encontro   //
 // por aí.                                                                             //
 //                                                                                     //    
 // Os valores da pilha serão abstratos (void *), pra fazer uma pilha de um tipo        //

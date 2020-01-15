@@ -1,25 +1,24 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                     //
 //                                  Fila / Queue                                       //
-//                         Implementada com listas ligadas                             //
+//                        Implementada com tabelas dinâmicas                           //
 //                                                                                     //
 // A fila é uma ADT (Abstract Data Type) que funciona como a fila da vida real.        //
 // Os primeiros a entrar são os primeiros a sair (ordem FIFO).                         //
 //                                                                                     //
-// Implementação da estrutura da fila usando listas ligadas, aonde o início da fila é  //
-// o primeiro nó.                                                                      //
+// Implementação da estrutura é feita usando um vetor dinâmico (muda de tamanho).      //
+// Em java isso é o ArrayList, em c++ é o vector.                                      //
 // Junto das operações padrão da fila e possíveis operações diferentes que encontro    //
 // por aí.                                                                             //
 //                                                                                     //    
 // Os valores da fila serão abstratos (void *), pra fazer uma fila de um tipo          //
-// específico é só trocar por int por exemplo. E trocar as associações de ponteiros    //
-// pra atribuições normais.                                                            //
-//                                                                                     //
+// específico é só trocar por int por exemplo.                                         //
+//                                                                                     // 
 /////////////////////////////////////////////////////////////////////////////////////////
 
 // Esse ifndef previne que o conteúdo seja definido/incluido duas vezes
-#ifndef FILA_LL_H
-#define FILA_LL_H
+#ifndef Fila_VE_H
+#define Fila_VE_H
 
 #include <stdlib.h> // size_t
 
@@ -27,20 +26,15 @@
 #define TRUE 1
 typedef int bool;
 
-// Estrutura do nó da lista / fila
-struct no {
-    void *valor; // Conteúdo do nó
-    size_t tamanho; // Tamanho em bytes do valor
-    struct no *prox; // Ponteiro pro próximo nó
-};
-
+// Estrutura da fila
 struct fila {
-    struct no *primeiro; // Começo da lista ligada
-    struct no *ultimo; // Ponteiro pro último elemento
-    int n; // Tamanho da fila
+    void *vetor; // Vetor que é a fila
+    size_t tam_elemento; // Tamanho em bytes dos itens da fila
+    int ini; // Índice do começo da fila
+    int fim; // Índice do final da fila
+    int tamanho; // Tamanho atual da fila (que vai mudando)
 };
 
-// Fila como lista ligada
 typedef struct fila * Fila;
 
 /////////////////////////////////////////////////////
@@ -49,28 +43,33 @@ typedef struct fila * Fila;
 //
 /////////////////////////////////////////////////////
 
-// Aloca uma fila vazia na memória
-Fila criaFila ();
+// Aloca uma Fila na memória, 
+// tamanho = tamanho dos elementos
+Fila criaFila (size_t tamanho);
 
-// Insere (enqueue) o elemento de tamanho sz no final da fila P
-void enfileira (Fila P, void *elemento, size_t sz);
+// EmFila um cópia do elemento de tamanho P->tamanho na Fila P
+// Se a Fila está cheia, não faz nada
+void enfileira (Fila F, void *elemento);
 
-// Remove (dequeue) o elemento do inicio da fila P
-void desenfileira (Fila P);
+// DesemFila (pop) o topo de P
+void desenfileira (Fila F);
 
-// Desenfileira o topo de P e retorna uma cópia do elemento desenfileirado
-void *desenfileiraE (Fila P);
+// DesemFila o topo de P e retorna uma cópia do elemento desemFilado
+void *desenfileiraE (Fila F);
 
-// Retorna uma cópia do elemento no início da Fila
-void *inicio (Fila P);
+// Retorna uma cópia do primeiro elemento da fila
+void *inicio (Fila F);
 
 // Verifica se a fila está vazia
-bool estaVazia (Fila P);
+bool estaVazia (Fila F);
 
-// Limpa todos os nós da fila
-void limpa (Fila P);
+// Verifica se a fila está cheia
+bool estaCheia (Fila F);
+
+// Limpa a fila da memória
+void limpa (Fila F);
 
 // Retorna a quantidade de elementos na fila
-int tamanho (Fila P);
+int tamanho (Fila F);
 
 #endif

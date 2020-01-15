@@ -19,17 +19,19 @@ Fila criaFila (size_t tamanho, int max) {
 }
 
 // Enfileira uma cópia do elemento de tamanho F->tamanho na Fila F
-// Se a Fila está cheia, não faz nada
+// Se a fila está cheia, não faz nada
 void enfileira (Fila F, void *elemento) {
     if (estaCheia (F)) return;
-    int fim = (F->ini + F->n)%F->max; //índice do último da fila
+    //índice do último da fila, nossa fila é circular, quando chega 
+    // no fim volta pro começo, por isso o %
+    int fim = (F->ini + F->n)%F->max; 
     // Copia o elemento no final da fila
     for (int i = 0; i < F->tamanho; i++)
         F(fim)[i] = ((char *) elemento)[i]; 
     F->n++;
 }
 
-// Desenfileira (pop) o topo de P
+// Desenfileira (dequeue) o topo de P
 void desenfileira (Fila F) {
     F->ini = (F->ini + 1)%F->max;
     F->n--;
@@ -43,7 +45,7 @@ void *desenfileiraE (Fila F) {
     return aux;
 }
 
-// Retorna uma cópia do elemento no começo da Fila
+// Retorna uma cópia do elemento no começo da fila
 void *inicio (Fila F) {
     void *copia = malloc (F->tamanho);
     for (int i = 0; i < F->tamanho; i++)
@@ -51,12 +53,12 @@ void *inicio (Fila F) {
     return copia;
 }
 
-// Verifica se a Fila está vazia
+// Verifica se a fila está vazia
 bool estaVazia (Fila F) {
     return F->n == 0;
 }
 
-// Verifica se a Fila está cheia
+// Verifica se a fila está cheia
 bool estaCheia (Fila F) {
     return F->n == F->max;
 }

@@ -4,7 +4,7 @@
 //                          Implementada com vetor estático                            //
 //                                                                                     //
 // Implementação da estrutura da pilha usando um vetor estático (não muda de tamanho). //                                             //
-// Junto das operações padrão da pilha e possíveis operações diferente que encontro    //
+// Junto das operações padrão da pilha e possíveis operações diferentes que encontro   //
 // por aí.                                                                             //
 //                                                                                     //    
 // Os valores da pilha serão abstratos (void *), pra fazer uma pilha de um tipo        //

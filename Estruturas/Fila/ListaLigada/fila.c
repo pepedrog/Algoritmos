@@ -1,14 +1,14 @@
 #include "fila.h"
 
 // Aloca uma fila vazia na memória
-Fila iniciaFila () {
+Fila criaFila () {
     Fila nova = malloc (sizeof (struct fila));
     nova->n = 0;
     nova->ultimo = nova->primeiro = NULL;
     return nova;
 }
 
-// Enfileira (push) o elemento de tamanho sz
+// Enfileira (enqueue) o elemento de tamanho sz
 void enfileira (Fila F, void *elemento, size_t sz) {
     // Cria um novo nó pro elemento
     struct no *novo = malloc (sizeof (struct no));
@@ -27,7 +27,7 @@ void enfileira (Fila F, void *elemento, size_t sz) {
     F->n++;
 }
 
-// Desenfileira (pop) o elemento do topo
+// Desenfileira (dequeue) o elemento do topo
 void desenfileira (Fila F) {
     if (estaVazia (F)) return;
     struct no *aux = F->primeiro;
@@ -38,14 +38,14 @@ void desenfileira (Fila F) {
     free (aux);
 }
 
-// Desenfileira (pop) o elemento do topo e retorna o elemento desenfileirado
+// Desenfileira (dequeue) o elemento do topo e retorna o elemento desenfileirado
 void *desenfileiraE (Fila F) {
     void * topo_aux = inicio (F);
     desenfileira (F);
     return topo_aux;
 }
 
-// Retorna uma cópia do elemento do topo de P
+// Retorna uma cópia do primeiro elemento da fila
 void *inicio (Fila F) {
     if (F->primeiro == NULL) return NULL;
     void * copia = malloc (F->primeiro->tamanho);
@@ -54,12 +54,12 @@ void *inicio (Fila F) {
     return copia;
 }
 
-// Verifica se a Fila está vazia
+// Verifica se a fila está vazia
 bool estaVazia (Fila F) {
     return F->n == 0;
 }
 
-// Limpa todos os nós da Fila
+// Limpa todos os nós da fila
 void limpa (Fila F) {
     while (! estaVazia (F))
         desenfileira (F);

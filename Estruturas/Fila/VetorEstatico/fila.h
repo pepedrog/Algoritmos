@@ -3,11 +3,14 @@
 //                                  Fila / Queue                                       //
 //                          Implementada com vetor estático                            //
 //                                                                                     //
+// A fila é uma ADT (Abstract Data Type) que funciona como a fila da vida real.        //
+// Os primeiros a entrar são os primeiros a sair (ordem FIFO).                         //
+//                                                                                     //
 // Implementação da estrutura da fila usando um vetor estático (não muda de tamanho).  //                                             //
 // Junto das operações padrão da fila e possíveis operações diferentes que encontro    //
 // por aí.                                                                             //
 //                                                                                     //    
-// Os valores da fila serão abstratos (void *), pra fazer uma Fila de um tipo         //
+// Os valores da fila serão abstratos (void *), pra fazer uma fila de um tipo          //
 // específico é só trocar por int por exemplo.                                         //
 //                                                                                     // 
 /////////////////////////////////////////////////////////////////////////////////////////
