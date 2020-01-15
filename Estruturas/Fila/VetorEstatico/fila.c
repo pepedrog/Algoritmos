@@ -22,10 +22,11 @@ Fila criaFila (size_t tamanho, int max) {
 // Se a Fila está cheia, não faz nada
 void enfileira (Fila F, void *elemento) {
     if (estaCheia (F)) return;
+    int fim = (F->ini + F->n)%F->max; //índice do último da fila
     // Copia o elemento no final da fila
     for (int i = 0; i < F->tamanho; i++)
-        F(F->fim)[i] = ((char *) elemento)[i]; 
-    F->fim = (F->fim + 1)%F->max;
+        F(fim)[i] = ((char *) elemento)[i]; 
+    F->n++;
 }
 
 // Desenfileira (pop) o topo de P
