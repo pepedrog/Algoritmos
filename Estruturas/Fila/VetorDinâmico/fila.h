@@ -7,7 +7,7 @@
 // Os primeiros a entrar são os primeiros a sair (ordem FIFO).                         //
 //                                                                                     //
 // Implementação da estrutura é feita usando um vetor dinâmico (muda de tamanho).      //
-// Em java isso é o ArrayList, em c++ é o vector.                                      //
+// Em java isso é o ArrayList, em C++ é o vector.                                      //
 // Junto das operações padrão da fila e possíveis operações diferentes que encontro    //
 // por aí.                                                                             //
 //                                                                                     //    
@@ -47,14 +47,14 @@ typedef struct fila * Fila;
 // tamanho = tamanho dos elementos
 Fila criaFila (size_t tamanho);
 
-// EmFila um cópia do elemento de tamanho P->tamanho na Fila P
+// Enfileira (enqueue) uma cópia do elemento de tamanho P->tamanho na Fila P
 // Se a Fila está cheia, não faz nada
 void enfileira (Fila F, void *elemento);
 
-// DesemFila (pop) o topo de P
+// Desenfileira (dequeue) o topo de P
 void desenfileira (Fila F);
 
-// DesemFila o topo de P e retorna uma cópia do elemento desemFilado
+// Desenfileira o o primeiro elemento de F e retorna uma cópia dele
 void *desenfileiraE (Fila F);
 
 // Retorna uma cópia do primeiro elemento da fila
@@ -62,9 +62,6 @@ void *inicio (Fila F);
 
 // Verifica se a fila está vazia
 bool estaVazia (Fila F);
-
-// Verifica se a fila está cheia
-bool estaCheia (Fila F);
 
 // Limpa a fila da memória
 void limpa (Fila F);
