@@ -63,7 +63,7 @@ void unionQU (QU UF, int i, int j);
 //                             Weighted Quick Union                                    //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-// Estrutura do Union Find para o QU
+// Estrutura do Union Find
 struct wqu {
     int *id; // Vetor de ids
     int *sz; // Vetor de tamanho dos conjuntos
@@ -85,7 +85,7 @@ void unionWQU (WQU UF, int i, int j);
 //                          Weighted Quick Union (height)                              //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-// Estrutura do Union Find para o QU
+// Estrutura do Union Find
 struct hqu {
     int *id; // Vetor de ids
     int *h; // Vetor com a altura dos conjuntos
@@ -104,32 +104,10 @@ int findHQU (HQU UF, int i);
 void unionHQU (HQU UF, int i, int j);
 
 /////////////////////////////////////////////////////////////////////////////////////////
-//                 Weighted Quick Union com Path Compression by Harving                //
+//                 Weighted Quick Union com Path Compression by Halving                //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-// Estrutura do Union Find para o QU
-struct qupch {
-    int *id; // Vetor de ids
-    int *sz; // Vetor de tamanho dos conjuntos
-    int n;   // Quantidade de elementos
-};
-
-typedef struct qupch *QUPCH;
-
-// Aloca um UF na memória e inicializa com n conjuntos unitários
-QUPCH criaQUPCH (int n);
-
-// Devolve o identificador do conjunto do elemento i no Union Find UF
-int findQUPCH (QUPCH UF, int i);
-
-// Conecta os elementos i e j no UnionFind UF
-void unionQUPCH (QUPCH UF, int i, int j);
-
-/////////////////////////////////////////////////////////////////////////////////////////
-//                 Weighted Quick Union com Path Compression by Harving                //
-/////////////////////////////////////////////////////////////////////////////////////////
-
-// Estrutura do Union Find para o QU
+// Estrutura do Union Find
 struct quph {
     int *id; // Vetor de ids
     int *sz; // Vetor de tamanho dos conjuntos
@@ -183,7 +161,7 @@ struct qupc {
 typedef struct qupc *QUPC;
 
 // Aloca um UF na memória e inicializa com n conjuntos unitários
-QUPS criaQUPC (int n);
+QUPC criaQUPC (int n);
 
 // Devolve o identificador do conjunto do elemento i no Union Find UF
 int findQUPC (QUPC UF, int i);
