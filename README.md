@@ -1,7 +1,7 @@
 # Algoritmos
 Implementações de algoritmos importantes/interessantes que tive contato ao longo da graduação (Bacharelado em Ciência da Computação - IME USP). O objetivo é ir construindo uma biblioteca de códigos completa e razoavelmente bem comentada. Um resumão das partes essenciais da graduação!
 
-Cabe aqui uma observação: Os algoritmos desse repositórios estão integralmente em português (comentários, variáveis, funções). Reconheço que isso pode não ser uma boa prática, mas fazer em português condiz com o que vi ao longo do curso e, para mim, ajuda na didática e clareza dos algoritmos para programadores iniciantes.
+Cabe aqui uma observação: Os algoritmos desse repositórios estão integralmente em português (comentários, variáveis, funções). Reconheço que isso pode não ser uma boa prática, mas fazer em português condiz com o a forma que aprendi esses conteúdos e, para mim, ajuda na didática e clareza dos algoritmos para programadores iniciantes.
 
 Motivado pelo conteúdo das matérias do BCC, em particular pelos cursos mais práticos
 - MAC0121 Algoritmos e estruturas de dados I
