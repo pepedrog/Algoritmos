@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////
 //                                                                     //
-//                      Algoritmo de Shamos e Hoey                     //
+//                 Algoritmo de Shamos e Hoey (1985)                   //
 //                                                                     //
 // Problema: Dados n pontos no plano, determinar dois deles que estão  //
 // a distância mínima (par de pontos mais próximos).                   //
@@ -21,7 +21,21 @@
 //     que usa um ponto de cada.                                       //
 //                                                                     //
 // * Esse passo é o mais complexo, pois tem que ser feito em O(n).     //
+// Com esses passos, o tempo do algoritmo pode ser dado pela fórmula   //
+// T(n) = 2*T(n/2) + O(n) e isso é O(n lgn). 
+//                                                                     //
+// Esse algoritmo aparece na sessão 33.4 do enciclopédico CLRS.        //
+// Shamos e Preparata mostram que esse algoritmo é ótimo.              //
+//                                                                     //
 /////////////////////////////////////////////////////////////////////////
+
+// Compilar com
+// gcc -o sh pontosProximos.c ../Ordenação/mergeSort.c ../Ordenação/FunçõesAuxiliares/manipula.c 
+// Ou implementar o mergesort aqui
+
+#include "../Ordenação/vetor.h" // mergeSort
+#include <stdlib.h>
+#include <stdio.h>
 
 // Estrutura dos nossos pontos
 typedef struct {
@@ -31,60 +45,152 @@ typedef struct {
 
 // Estrutura que guarda um par de pontos, usaremos para retorno
 typedef struct {
-    Ponto p1;
-    Ponto p2;
+    ponto p1;
+    ponto p2;
 } par;
 
 // Função que retorna o quadrado da distância de dois pontos
 float dist (ponto p1, ponto p2) {
-    return (p1.x - p2.x)*(p1.x - p2.x) + 
-           (p1.y - p2.y)*(p1.y - p2.y);
+    float d = (p1.x - p2.x)*(p1.x - p2.x) + 
+              (p1.y - p2.y)*(p1.y - p2.y);
+    if (d > 0) return d;
+    return __FLT_MAX__;
 }
 
 // Função que retorna o par com menor distância
 par minPar (par par1, par par2) {
-    if (dist (par1.p1, par1.p2) < dist (par2.p1, par2.p2))
-        return par1;
+    if (dist (par1.p1, par1.p2) < dist (par2.p1, par2.p2)) return par1;
     return par2;
 }
 
-// Função que ordena um vetor de pontos por ordem crescente da coordenada X
-// pelo algoritmo mergeSort
-void ordenaX (ponto *P, int ini, int fim) {
-    if (fim <= ini + 1) return;
-    int meio = (ini + fim)/2;
-    ordenaX (P, ini, meio);
-    ordenaX (P, meio + 1, fim);
-    intercalaX (P, ini, fim);
-}
-void intercalaX (ponto *P, int ini, int fim) {
-    // to do
+// Função que passaremos para ordenar, verifica qual ponto tem a coord x menor
+int comparaX (const void *p1, const void *p2) {
+    if (((ponto *) p1)->x > ((ponto *) p2)->x)
+        return 1;
+    return -1;
 }
 
+// macro para o valor absoluto de x
+#define abs(x) ((x) > 0 ? (x) : -(x))
 
-// Função que recebe um vetor de pontos P[1..n]
-// E retorna um par de pontos que estão a distância mínima
-par pontosProximos_SH (ponto *P, int n) {
-    ordenaX (P, 1, n);
-    return pontosProximosRec (P, 0, n);
+// Função que recebe um vetor de ponto P[i..j] ordenados pela coordenada Y
+// e retorna um vetor de pontos que estão a uma faixa vertical de tamanho d do ponto meio
+// ou seja, pontos com a coordenada x entre [meio.x - d, meio.x + d]
+// O tamanho do vetor retornado estará em nCand
+ponto *candidatos (ponto *P, int i, int j, ponto meio, float d, int *nCand) {
+    *nCand = 0;
+    ponto *cand = malloc ((j - i) * sizeof (ponto));
+    for (int k = i; k < j; k++)
+        if (abs(P[k].x - meio.x) < d)
+            cand[(*nCand)++] = P[k];
+    return cand;
+}
+
+// Função que recebe um vetor de pontos P[i..j] ordenados pela coordenada Y e
+// divididos em duas metades pelo ponto meio e retorna um par de pontos com um ponto
+// de cada metade com distância mínima.
+par pontosInter (ponto *P, int i, int j, ponto meio, par min) {
+    int k, l;
+    float dCand, d = dist (min.p1, min.p2);
+    // Vamos achar todos os pontos na faixa ]-d, d[
+    // Que são candidatos a serem um par próximo
+    int nCand; // número de candidatos
+    ponto *cand = candidatos (P, i, j, meio, d, &nCand);
+    // Pra cada candidato, confiro se tem algum par de pontos proximos
+    for (k = 0; k < nCand; k++) {
+        for (l = k + 1; l < nCand; l++) {
+            // Se os pontos já estão distantes, posso parar de olhar
+            if (cand[l].y - cand[k].y > d) break;
+            // (O que garante que essa função é linear é que nunca há mais que 7 candidatos
+            // Então esse for interno não repetirá mais que 7 vezes)
+
+            dCand = dist (cand[k], cand[l]);
+            if (dCand < d) {
+                d = dCand;
+                min.p1 = cand[k];
+                min.p2 = cand[l];
+                //printf ("achei uma nova dist %.3f com os pontos (%.3f, %.3f) e (%.3f, %.3f)\n", dCand, min.p1.x, min.p1.y, min.p2.x, min.p2.y);
+            }
+        }
+    }
+    free (cand);
+    return min;
+}
+
+// Função intercala do mergeSort que ordenará os pontos pela coordenada Y
+void intercalaY (ponto *P, int ini, int fim) {
+    ponto *aux = malloc ((fim - ini) * sizeof (ponto));
+    int meio = (ini + fim) / 2;
+    int ini1 = ini;
+    int ini2 = meio;
+    int atual = 0;
+    // Enquanto nenhuma das duas metades acabar
+    while (ini1 < meio && ini2 < fim) {
+        if (P[ini1].y > P[ini2].y) aux[atual++] = P[ini2++];
+        else aux[atual++] = P[ini1++];
+    }
+    // Copia a metade que ainda não acabou pro final do vetor
+    while (ini1 < meio) aux[atual++] = P[ini1++];
+    while (ini2 < fim) aux[atual++] = P[ini2++];
+    // Copia o aux no vetor
+    atual = 0;
+    while (ini < fim) P[ini++] = aux[atual++];
+    free (aux);
 }
 
 // Encontra o par de pontos mais próximo entre os pontos i e j.
-par pontosproximosRec (ponto *P, int i, int j) {
+// Enquanto isso ordena o vetor P em relação a coordenada Y (mergesort escondido)
+par pontosProximosRec (ponto *P, int i, int j) {
     par min;
     // Base da recorrência, quando 2 ou 1 ponto
     if (j - i <= 2) {
         min.p1 = P[i];
         min.p2 = P[j-1];
+        // Ordena com relação a Y (base do mergesort escondido)
+        if (P[i].y > P[j-1].y) { 
+            ponto aux = P[i];
+            P[i] = P[j-1];
+            P[j-1] = aux;
+        }
     }
     else {
         int q = (i + j)/2;
-        par esq = pontosproximosRec (P, i, q);
-        par dir = pontosProximosRec (P, q + 1, j);
-        min = minPar (esq, dir); 
-        // Calculamos agora o menor par com um ponto de cada metade
-        par meio = combina (P, i, j, min); // to do
-        min = minPar (min, meio); 
+        ponto meio = P[q];
+        // Calculamos o menor par das duas metades
+        par esq = pontosProximosRec (P, i, q);
+        par dir = pontosProximosRec (P, q, j);
+        min = minPar (esq, dir);
+        // Na recursão, ordena os pontos pela coordenada Y (mergeSort)
+        intercalaY (P, i, j);
+        // Calculamos o menor par entre as duas metades
+        par inter = pontosInter (P, i, j, meio, min);
+        min = minPar (min, inter); 
     }
     return min;
+}
+
+// Função que recebe um vetor de pontos P[1..n]
+// E retorna um par de pontos que estão a distância mínima
+par pontosProximos_SH (ponto *P, int n) {
+    mergeSort ((void *) P, n, sizeof (ponto), comparaX);
+    // Imprimir os pontos para debugar
+    // for (int i = 0; i < n; i++) 
+    //    printf ("(%.3f, %.3f)\n", P[i].x, P[i].y);
+    return pontosProximosRec (P, 0, n);
+}
+
+// Nosso super teste :D
+int main () {
+    int n = 15;
+    ponto *P = malloc (n * sizeof (ponto));
+    // sorteando n pontos num plano 10x10
+    srand (1);
+    for (int i = 0; i < n; i++) {
+        P[i].x = ((rand() / (float) RAND_MAX) * 10);
+        P[i].y = ((rand() / (float) RAND_MAX) * 10);
+    }
+
+    par pertos = pontosProximos_SH (P, n);
+    printf ("O par de pontos mais próximo é (%.3f, %.3f) e (%.3f, %.3f) com dist^2 %.3f\n", 
+            pertos.p1.x, pertos.p1.y, pertos.p2.x, pertos.p2.y, dist (pertos.p1, pertos.p2));
 }
