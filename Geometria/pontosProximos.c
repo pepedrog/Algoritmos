@@ -30,29 +30,17 @@
 /////////////////////////////////////////////////////////////////////////
 
 // Compilar com
-// gcc -o sh pontosProximos.c ../Ordenação/mergeSort.c ../Ordenação/FunçõesAuxiliares/manipula.c 
+// gcc -o sh pontosProximos.c ponto.c ../Ordenação/mergeSort.c ../Ordenação/FunçõesAuxiliares/manipula.c 
 // Ou implementar o mergesort aqui
 
 #include "../Ordenação/vetor.h" // mergeSort
+#include "geometria.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-// Estrutura dos nossos pontos
-typedef struct {
-    float x;
-    float y;
-} ponto;
-
-// Estrutura que guarda um par de pontos, usaremos para retorno
-typedef struct {
-    ponto p1;
-    ponto p2;
-} par;
-
-// Função que retorna o quadrado da distância de dois pontos
+// Função que retorna a distância entre dois pontos ou infinito se a distância for a 0
 float dist (ponto p1, ponto p2) {
-    float d = (p1.x - p2.x)*(p1.x - p2.x) + 
-              (p1.y - p2.y)*(p1.y - p2.y);
+    float d = dist2 (p1, p2);
     if (d > 0) return d;
     return __FLT_MAX__;
 }
@@ -109,7 +97,6 @@ par pontosInter (ponto *P, int i, int j, ponto meio, par min) {
                 d = dCand;
                 min.p1 = cand[k];
                 min.p2 = cand[l];
-                //printf ("achei uma nova dist %.3f com os pontos (%.3f, %.3f) e (%.3f, %.3f)\n", dCand, min.p1.x, min.p1.y, min.p2.x, min.p2.y);
             }
         }
     }
@@ -171,7 +158,7 @@ par pontosProximosRec (ponto *P, int i, int j) {
 
 // Função que recebe um vetor de pontos P[1..n]
 // E retorna um par de pontos que estão a distância mínima
-par pontosProximos_SH (ponto *P, int n) {
+par pontosProximos (ponto *P, int n) {
     mergeSort ((void *) P, n, sizeof (ponto), comparaX);
     // Imprimir os pontos para debugar
     // for (int i = 0; i < n; i++) 
@@ -185,12 +172,10 @@ int main () {
     ponto *P = malloc (n * sizeof (ponto));
     // sorteando n pontos num plano 10x10
     srand (1);
-    for (int i = 0; i < n; i++) {
-        P[i].x = ((rand() / (float) RAND_MAX) * 10);
-        P[i].y = ((rand() / (float) RAND_MAX) * 10);
-    }
+    for (int i = 0; i < n; i++)
+        P[i] = novoPonto ((rand() / (float) RAND_MAX) * 10, (rand() / (float) RAND_MAX) * 10);
 
-    par pertos = pontosProximos_SH (P, n);
+    par pertos = pontosProximos (P, n);
     printf ("O par de pontos mais próximo é (%.3f, %.3f) e (%.3f, %.3f) com dist^2 %.3f\n", 
             pertos.p1.x, pertos.p1.y, pertos.p2.x, pertos.p2.y, dist (pertos.p1, pertos.p2));
 }
