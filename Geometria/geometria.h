@@ -27,12 +27,6 @@ typedef struct { ponto p1, p2; } par;
 // Um par de pontos pode determinar um segmento de reta
 typedef par segmento;
 
-// Estrutura que usaremos para representar um polígono
-typedef struct { 
-    int n;    // Quantidade de vértices
-    ponto *p; // Vetor de vértices, em sequência e em sentido anti-horário
-} poligono;
-
 // Função para facilitar a inicialização de um ponto
 ponto novoPonto (float x, float y);
 
@@ -74,7 +68,46 @@ bool intersectaProp (segmento ab, segmento cd);
 bool intersecta (segmento ab, segmento cd);
 
 ///////////////////////////////////////////////////////////////////////////////
+// Algoritmos avulsos de pontos e segmentos
+///////////////////////////////////////////////////////////////////////////////
 
 // Função que recebe um vetor de pontos P[1..n]
 // e retorna um par de pontos com distância mínima (Algoritmo Shamos-Hoey)
 par pontosProximos (ponto *P, int n);
+
+///////////////////////////////////////////////////////////////////////////////
+// Algoritmos de polígonos
+///////////////////////////////////////////////////////////////////////////////
+
+// Estrutura que usaremos para representar um polígono
+typedef struct { 
+    int n;    // Quantidade de vértices
+    ponto *p; // Vetor de vértices, em sequência e em sentido anti-horário
+} poligono;
+
+// Definições e convenções:
+// 
+// Diagonal: é um segmento de reta dada por 2 vértices do polígono,
+//           que está inteiramente contida no polígono e não intersecta a borda
+//           Representaremos uma diagonal por um vetor int[2] com os índices 
+//           dos vértices
+//
+// Triangulação: Uma partição do polígono em triangulos, pode ser dado
+//               por um conjunto maximal de diagonais que não se intersectam
+//               Representaremos por um vetor de diagonais, int[2][n]
+// 
+
+
+// Função que retorna se o segmento formado pelos vétices i e j do polígono
+// formam uma diagonal 
+bool diagonal (poligono p, int i, int j);
+
+// Função que retorna um vetor de diagonais (um int[2] dos índices dos vértices
+// do polígono) que descrevem uma triangulação
+// (Algoritmo força bruta, O(n^4)) 
+int **triangulacao4 (poligono p);
+
+// Função que retorna um vetor de diagonais (um int[2] dos índices dos vértices
+// do polígono) que descrevem uma triangulação
+// (Algoritmo que usa orelhas, O(n^2)) 
+int **triangulacao2 (poligono p);
