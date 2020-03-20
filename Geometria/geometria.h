@@ -86,6 +86,9 @@ typedef struct {
     ponto *v; // Vetor de vértices, em sequência e em sentido anti-horário
 } poligono;
 
+// Função que cria um polígono de n vértices
+poligono novoPoligono (int n, ponto v[]);
+
 // Diagonal: Uma diagonal de um polígono p é um segmento de reta dado por dois
 //           vértices de p que está inteiramente contido no polígono e não 
 //           intersecta propriamente a borda. 
@@ -103,11 +106,6 @@ bool eDiagonal (poligono p, int i, int j);
 // Triangulação: Uma partição do polígono em triangulos, pode ser dado
 //               por um conjunto maximal de diagonais que não se intersectam
 //               Representaremos por um vetor de diagonais, int[2][n]
-
-// Função que retorna um vetor de n-3 diagonais (um int[2] dos índices dos vértices
-// do polígono) que descrevem uma triangulação
-// (Algoritmo força bruta, O(n^4)) 
-diagonal *triangulacao4 (poligono p);
 
 // Função que retorna um vetor de n-3 diagonais (um int[2] dos índices dos vértices
 // do polígono) que descrevem uma triangulação

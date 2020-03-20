@@ -37,28 +37,29 @@ float area2 (ponto p1, ponto p2, ponto p3) {
 bool colineares (ponto a, ponto b, ponto c) {
     // São colineares se a àrea do triangulo é 0
     // Mas temos que tomar cuidado com erros numéricos
-    float area = Area2 (a, b, c);
-    return (area <= 2*__FLT_EPSILON__ && area >= 2*__FLT_EPSILON__);
+    float area = area2 (a, b, c);
+    //printf ("testando (%.0f, %.0f) (%.0f, %.0f) (%.0f, %.0f) = %.2f\n", a.x, a.y, b.x, b.y, c.x, c.y, area);
+    return (area <= 2*__FLT_EPSILON__ && area >= -2*__FLT_EPSILON__);
 }
 
 // Função que retorna se o ponto c está estritamente à esquerda do segmento ab
 bool esquerdaEstrita (segmento ab, ponto c) {
-    return (esquerda (ab, c) && !colineares (ab.p1, ab.p2, c));
+    return area2 (ab.p1, ab.p2, c) > 2*__FLT_EPSILON__;
 }
 
 // Função que retorna se o ponto c está à esquerda ou é colinear ao segmento ab
 bool esquerda (segmento ab, ponto c) {
-    return Area2 (ab.p1, ab.p2, c) >= 0;
+    return area2 (ab.p1, ab.p2, c) >= 0;
 }
 
 // Função que retorna se o ponto c está estritamente à direita do segmento ab
 bool direitaEstrita (segmento ab, ponto c) {
-    return (direita (ab, c) && !colineares (ab.p1, ab.p2, c));
+    return area2 (ab.p1, ab.p2, c) < -2*__FLT_EPSILON__;
 }
 
 // Função que retorna se o ponto c está à direita ou é colinear ao segmento ab
 bool direita (segmento ab, ponto c) {
-    return Area2 (ab.p1, ab.p2, c) <= 0;
+    return area2 (ab.p1, ab.p2, c) <= 0;
 }
 
 // Função que retorna se o ponto c pertence ao segmento ab
@@ -69,23 +70,21 @@ bool entre (segmento ab, ponto c) {
     return ((ab.p1.y <= c.y && c.y <= ab.p2.y) || (ab.p2.y <= c.y && c.y <= ab.p1.y));
 }
 
-// Função que retorna se o segmento ab e o segmento cd se intersectam em um ponto
-// no interior deles (não considera as extremidades)
-bool intersectaProp (segmento ab, segmento cd) {
-    // Se intersecta e as extremidades não são colineares
-    return (intersecta (ab, cd) && (!colineares (ab.p1, ab.p2, cd.p1) ||
-                                    !colineares (ab.p1, ab.p2, cd.p2) ||
-                                    !colineares (cd.p1, cd.p2, ab.p1) ||
-                                    !colineares (cd.p1, cd.p2, ab.p2) ));
-}
-
 // Função que retorna se o segmento ab e o segmento cd se intersectam
 bool intersecta (segmento ab, segmento cd) {
     // Esse grande predicado faz mais sentido se você visualizar os pontos num papel
-
     // Os pontos de um segmento tem que estar um de cada lado do outro segmento
     return ((( esquerda (ab, cd.p1) &&  direita (ab, cd.p2)) ||
              (  direita (ab, cd.p1) && esquerda (ab, cd.p2))) &&
             (( esquerda (cd, ab.p1) &&  direita (cd, ab.p2)) ||
              (  direita (cd, ab.p1) && esquerda (cd, ab.p2))));
+}
+
+// Função que retorna se o segmento ab e o segmento cd se intersectam em um ponto
+// no interior deles (não considera as extremidades)
+bool intersectaProp (segmento ab, segmento cd) {
+    return ((( esquerdaEstrita (ab, cd.p1) &&  direitaEstrita (ab, cd.p2)) ||
+             (  direitaEstrita (ab, cd.p1) && esquerdaEstrita (ab, cd.p2))) &&
+            (( esquerdaEstrita (cd, ab.p1) &&  direitaEstrita (cd, ab.p2)) ||
+             (  direitaEstrita (cd, ab.p1) && esquerdaEstrita (cd, ab.p2))));
 }
