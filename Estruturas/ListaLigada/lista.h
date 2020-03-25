@@ -45,9 +45,6 @@ void insereFim (No *lista, void *elemento, size_t sz);
 // Versão do insere que retorna um ponteiro para a nova lista
 No insereP (No lista, void *elemento, size_t sz);
 
-// Recebe uma lista ordenada e insere o elemento mantendo a ordem estabelecida pela função compara
-void insereOrdenado (No *lista, void *elemento, size_t sz, int (*compara)(void *, void *));
-
 // Remove a primeira aparição do elemento na lista
 void removeL (No *lista, void *elemento, size_t sz);
 
