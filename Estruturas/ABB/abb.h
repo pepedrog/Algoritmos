@@ -41,25 +41,25 @@ struct abb {
 typedef struct abb *Abb;
 
 // Função que aloca uma ABB na memória com a função compara
-Abb criaAbb (int (*compara) (const void *, const void *));
+Abb ABBnovaAbb (int (*compara) (const void *, const void *));
 
 // Função que insere um novo nó {chave, valor} na arvore 
-void insere (Abb arvore, void *chave, size_t sz_chave, void *valor, size_t sz_valor);
+void ABBinsere (Abb arvore, void *chave, size_t sz_chave, void *valor, size_t sz_valor);
 
 // Função que remove o nó associado a chave
-void remove (Abb arvore, void *chave);
+void ABBremove (Abb arvore, void *chave);
 
 // Função que busca um nó associdado a chave e retorna o nó correspondente ou NULL
 // se não houver nenhum nó
-No busca (Abb arvore, void *chave);
+No ABBbusca (Abb arvore, void *chave);
 
 // Limpa um Nó da memória, pode ser usado para limpar o nó recebido da busca
-void freeNo (No limpado);
+void ABBfreeNo (No limpado);
 
 // Função que retorna a altura da arvore
-int altura (Abb arvore);
+int ABBaltura (Abb arvore);
 
 // Função que retorna a quantidade de nós na árvore
-int nos (Abb arvore);
+int ABBnos (Abb arvore);
 
 #endif
