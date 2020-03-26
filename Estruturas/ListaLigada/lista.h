@@ -3,7 +3,7 @@
 //                            Lista Ligada / Linked List                               //
 //                                                                                     //
 // Lista Ligada é uma estrutura de dados que guarda uma coleção de itens, onde cada    //
-// itens guarda um ponteiro para conseguir acessar o próximo.                          //
+// item guarda um ponteiro para conseguir acessar o próximo.                          //
 //                                                                                     //
 // A convenção que usarei aqui é que a lista acaba em um nó nulo.                      //
 //                                                                                     //

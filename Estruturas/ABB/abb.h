@@ -49,17 +49,26 @@ void ABBinsere (Abb arvore, void *chave, size_t sz_chave, void *valor, size_t sz
 // Função que remove o nó associado a chave
 void ABBremove (Abb arvore, void *chave);
 
-// Função que busca um nó associdado a chave e retorna o nó correspondente ou NULL
-// se não houver nenhum nó
+// Função que busca um nó associdado a chave e retorna um ponteiro para o nó correspondente 
+// ou NULL se não houver nenhum nó com essa chave
 No ABBbusca (Abb arvore, void *chave);
-
-// Limpa um Nó da memória, pode ser usado para limpar o nó recebido da busca
-void ABBfreeNo (No limpado);
 
 // Função que retorna a altura da arvore
 int ABBaltura (Abb arvore);
 
 // Função que retorna a quantidade de nós na árvore
 int ABBnos (Abb arvore);
+
+// Função que limpa a árvore da memória
+void ABBlimpa (Abb arvore);
+
+// Função que percorre a árvore em pré-ordem fazendo, processando cada nó com a função processa
+void ABBpreOrdem (Abb arvore, void (*processa) (No));
+
+// Função que percorre a árvore em in-ordem fazendo, processando cada nó com a função processa
+void ABBinOrdem (Abb arvore, void (*processa) (No));
+
+// Função que percorre a árvore em pós-ordem fazendo, processando cada nó com a função processa
+void ABBposOrdem (Abb arvore, void (*processa) (No));
 
 #endif

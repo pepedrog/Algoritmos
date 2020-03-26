@@ -24,12 +24,12 @@ No novoNo (void *chave, size_t sz_chave, void *valor, size_t sz_valor, No esq, N
     novo->sz_valor = sz_valor;
     novo->esq = esq;
     novo->dir = dir;
-    novo->chave = malloc (sizeof (sz_valor));
-    novo->valor = malloc (sizeof (sz_chave));
+    novo->chave = malloc (sizeof (sz_chave));
+    novo->valor = malloc (sizeof (sz_valor));
     while (sz_chave--)
         ((char *) novo->chave)[sz_chave] = ((char *) chave)[sz_chave];
     while (sz_valor--)
-        ((char *) novo->valor)[sz_valor] = ((char *) chave)[sz_valor];
+        ((char *) novo->valor)[sz_valor] = ((char *) valor)[sz_valor];
     return novo;
 }
 
@@ -104,6 +104,7 @@ No ABBbusca (Abb arvore, void *chave) {
     return atual;
 }
 
+// Função recursiva que calcula a altura da subarvore dada pela raiz
 int alturaRec (No raiz, int h) {
     if (raiz == NULL) return h;
     int h_esq = alturaRec (raiz->esq, h + 1);
@@ -120,4 +121,58 @@ int ABBaltura (Abb arvore) {
 // Função que retorna a quantidade de nós na árvore
 int ABBnos (Abb arvore) {
     return arvore->n;
+}
+
+// Função que limpa a árvore recursivamente
+void limpaArvoreRec (No raiz) {
+    if (raiz == NULL) return;
+    limpaArvoreRec (raiz->dir);
+    limpaArvoreRec (raiz->esq);
+    freeNo (raiz);
+}
+// Função que limpa a árvore da memória
+void ABBlimpa (Abb arvore) {
+    if (arvore == NULL) return;
+    limpaArvoreRec (arvore->raiz);
+    free (arvore);
+}
+
+// Funções recursivas para percorrer a árvore
+void preOrdemRec (No raiz, void (*processa) (No)) {
+    if (raiz == NULL) return;
+    processa (raiz);
+    preOrdemRec (raiz->esq, processa);
+    preOrdemRec (raiz->dir, processa);
+}
+
+void inOrdemRec (No raiz, void (*processa) (No)) {
+    if (raiz == NULL) return;
+    inOrdemRec (raiz->esq, processa);
+    processa (raiz);
+    inOrdemRec (raiz->dir, processa);
+}
+
+void posOrdemRec (No raiz, void (*processa) (No)) {
+    if (raiz == NULL) return;
+    posOrdemRec (raiz->esq, processa);
+    posOrdemRec (raiz->dir, processa);
+    processa (raiz);
+}
+
+// Função que percorre a árvore em pré-ordem fazendo, processando cada nó com a função processa
+void ABBpreOrdem (Abb arvore, void (*processa) (No)) {
+    if (arvore == NULL) return;
+    preOrdemRec (arvore->raiz, processa);
+}
+
+// Função que percorre a árvore em in-ordem fazendo, processando cada nó com a função processa
+void ABBinOrdem (Abb arvore, void (*processa) (No)) {
+    if (arvore == NULL) return;
+    inOrdemRec (arvore->raiz, processa);
+}
+
+// Função que percorre a árvore em pós-ordem fazendo, processando cada nó com a função processa
+void ABBposOrdem (Abb arvore, void (*processa) (No)) {
+    if (arvore == NULL) return;
+    posOrdemRec (arvore->raiz, processa);
 }
