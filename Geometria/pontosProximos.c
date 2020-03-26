@@ -22,7 +22,7 @@
 //                                                                     //
 // * Esse passo é o mais complexo, pois tem que ser feito em O(n).     //
 // Com esses passos, o tempo do algoritmo pode ser dado pela fórmula   //
-// T(n) = 2*T(n/2) + O(n) e isso é O(n lgn). 
+// T(n) = 2*T(n/2) + O(n) e isso é O(n lgn).                           //
 //                                                                     //
 // Esse algoritmo aparece na sessão 33.4 do enciclopédico CLRS.        //
 // Shamos e Preparata mostram que esse algoritmo é ótimo.              //

@@ -75,6 +75,10 @@ bool intersecta (segmento ab, segmento cd);
 // e retorna um par de pontos com distância mínima (Algoritmo Shamos-Hoey)
 par pontosProximos (ponto *P, int n);
 
+// Função que recebe um vetor de n segmentos e retorna um par de segmentos que se intersectam
+// ou NULL se nenhum deles se intersectarem 
+segmento *intersecaoSegmentos (segmento *S, int n);
+
 ///////////////////////////////////////////////////////////////////////////////
 // Algoritmos de polígonos
 ///////////////////////////////////////////////////////////////////////////////
