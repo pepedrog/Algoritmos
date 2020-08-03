@@ -8,20 +8,37 @@
     copiaVetor (ordena, v, n, sizeof (int)); \
     t = clock();                    \
     ordenaTipo(ordena, n, int, nome); \
-    printf ("%s:  \t%fs\n", #nome, (clock() - t) / (float) CLOCKS_PER_SEC); \
+    printf ("%20s:  \t%fs\n", #nome, (clock() - t) / (float) CLOCKS_PER_SEC); \
     if (!ordenaTipo(ordena, n, int, estaOrdenado)) printf ("ERRO: vetor não ordenado\n")
 
+void printaInstrucoes () {
+    printf("Exemplo de uso: ./teste n=10000 k_min=0 k_max=1000\n");
+}
+
+// Le os argumentos da linha de comando
+void leArgumentos (int argc, char *argv[], int *n, int *k_min, int *k_max) {
+    char *arg;
+    for (int i = 1; i < argc; i++) {
+	if (argv[i][0] == 'n') {
+	    arg = &argv[i][2];
+	    *n = atoi (arg);
+	}
+	else if (argv[i][0] == 'k') {
+	    arg = &argv[i][5];
+	    if (argv[i][3] == 'i') *k_min = atoi (arg);
+	    else if (argv[i][3] == 'a') *k_max = atoi (arg);
+	    else printaInstrucoes();
+	}
+	else printaInstrucoes();
+    }
+}
+
 int main (int argc, char *argv[]) {
-    int n, k;
-
+    int n = 10000, k_min = 0, k_max = 10000;
+    leArgumentos(argc, argv, &n, &k_min, &k_max);
     clock_t t;
-    scanf ("%d %d", &n, &k);
-    //vetor v = iniciaVetor (n, sizeof (int));
-    vetor v = INTaleatorio (n, 0, k);
-
-    // INTgetVetor (v, n);
-    // INTprintaVetor (v, n);
-
+    
+    vetor v = INTaleatorio (n, k_min, k_max);
     vetor ordena = clonaVetor (v, n, sizeof (int));
     
     processa(quickSort);
@@ -34,8 +51,8 @@ int main (int argc, char *argv[]) {
 
     copiaVetor (ordena, v, n, sizeof (int));
     t = clock();
-    countingSort((int *) ordena, n, k);
-    printf ("CountingSort:  %fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
+    countingSort((int *) ordena, n, k_max);
+    printf ("        countingSort:\t%fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!ordenaTipo(ordena, n, int, estaOrdenado)) printf ("ERRO: vetor não ordenado\n");
 
     
