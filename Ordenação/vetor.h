@@ -112,6 +112,9 @@ void quickSortOtim1 (vetor v, int n, size_t sz, int (*compara) (const void *, co
 void quickSortOtim2 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 void quickSortOtim3 (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 void heapSort       (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void shellSort1     (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void shellSort2     (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
+void shellSort3     (vetor v, int n, size_t sz, int (*compara) (const void *, const void *));
 void countingSort   (int *v, int n, int k);
 
 #endif

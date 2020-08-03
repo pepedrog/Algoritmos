@@ -18,19 +18,18 @@ void printaInstrucoes () {
 // Le os argumentos da linha de comando
 void leArgumentos (int argc, char *argv[], int *n, int *k_min, int *k_max) {
     char *arg;
-    for (int i = 1; i < argc; i++) {
-	if (argv[i][0] == 'n') {
-	    arg = &argv[i][2];
-	    *n = atoi (arg);
-	}
-	else if (argv[i][0] == 'k') {
-	    arg = &argv[i][5];
-	    if (argv[i][3] == 'i') *k_min = atoi (arg);
-	    else if (argv[i][3] == 'a') *k_max = atoi (arg);
-	    else printaInstrucoes();
-	}
-	else printaInstrucoes();
-    }
+    for (int i = 1; i < argc; i++)
+        if (argv[i][0] == 'n') {
+            arg = &argv[i][2];
+            *n = atoi (arg);
+        }
+        else if (argv[i][0] == 'k') {
+            arg = &argv[i][5];
+            if (argv[i][3] == 'i') *k_min = atoi (arg);
+            else if (argv[i][3] == 'a') *k_max = atoi (arg);
+            else printaInstrucoes();
+        }
+        else printaInstrucoes();
 }
 
 int main (int argc, char *argv[]) {
@@ -55,7 +54,9 @@ int main (int argc, char *argv[]) {
     printf ("        countingSort:\t%fs\n", (clock() - t) / (float) CLOCKS_PER_SEC);
     if (!ordenaTipo(ordena, n, int, estaOrdenado)) printf ("ERRO: vetor não ordenado\n");
 
-    
+    processa(shellSort1);
+    processa(shellSort2);
+    processa(shellSort3);
     processa(selectionSort);
     processa(insertionSort);
     processa(cocktailSort);
